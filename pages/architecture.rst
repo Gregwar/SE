@@ -173,14 +173,27 @@ en général accessibles via des **adresses**.
 Instructions binaire, assembleur
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Exemples depuis une datasheet type atmega
+Le coeur du processeur déchiffre les instructions et execute les actions en
+conséquence.
+
+.. discover::
+    Ces instructions sont appellées langage machine (opcodes).
+
+.. discover::
+    Afin de pouvoir représenter ces opérations, on utilise des mnémoniques,
+    qui représentent le langage assembleur.
 
 .. slide::
 
 Chargement du programme
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Modes natifs, bootloaders...
+Les micro-contrôleurs proposent en général plusieurs manière d'être programmés en
+sortie d'usine (JTAG, SPI, série...)
+
+.. discover::
+    Les cartes de développement sont fréquemment équipées d'un programme permettant
+    lui-même de les reprogrammer. C'est ce que l'on appelle un **bootloader**.
 
 .. slide::
 
@@ -354,3 +367,34 @@ Il sera possible de changer la valeur de la broche PB2 comme cela:
         // Définit la broche à "High"
         PORTB |= _BV(PB2);
     }
+
+.. slide::
+
+Voici le code assembleur qui correspondra à ces instructions::
+
+      22 9a           sbi     0x04, 2 ; 4
+      2a 9a           sbi     0x05, 2 ; 5
+      08 95           ret
+
+.. slide::
+
+En amont, le compilateur ajoutera le préambule::
+
+      11 24           eor     r1, r1
+      1f be           out     0x3f, r1        ; 63
+      cf ef           ldi     r28, 0xFF       ; 255
+      d8 e0           ldi     r29, 0x08       ; 8
+      de bf           out     0x3e, r29       ; 62
+      cd bf           out     0x3d, r28       ; 61
+      0e 94 40 00     call    0x80    ; 0x80 <main>
+      0c 94 43 00     jmp     0x86    ; 0x86 <_exit>
+
+.. slide::
+
+Et l'épilogue::
+
+        00000086 <_exit>:
+          86:   f8 94           cli
+        00000088 <__stop_program>:
+          88:   ff cf           rjmp    .-2             ; 0x88 <__stop_program>
+
