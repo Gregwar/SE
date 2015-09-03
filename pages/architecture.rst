@@ -136,10 +136,6 @@ Il existe plusieurs genre de circuits intégrés:
 Programmation de microcontrôleurs
 ---------------------------------
 
-Exemple bottom-up ou top down 
-
-.. slide::
-
 Mémoire
 ~~~~~~~
 
@@ -155,16 +151,22 @@ Registres
 ~~~~~~~~~
 
 Un processeur contient également des **registres**, qui sont
-des cases particulières de la mémoire ayant un effet sur le comportement
+des "cases" particulières de la mémoire ayant un effet sur le comportement
 du processeur ou du hardware.
+
+.. center::
+
+    .. image:: img/atmega-regs.png
 
 .. slide::
 
-Adressage
-~~~~~~~~~
-
 Les éléments (registres, mémoire vive, morte...) présents sur le bus ou non sont
-en général accessibles via des adresses.
+en général accessibles via des **adresses**.
+
+.. slide::
+
+.. center::
+    .. image:: img/atmega-archi.png
 
 .. slide::
 
@@ -315,3 +317,40 @@ Et celui-ci?
 .. textOnly::
     Il est important de maîtriser ces opérations binaires pour pouvoir facilement
     travailler sur des registres par la suite.
+
+.. slide::
+
+Un exemple: les broches d'ATmega
+--------------------------------
+
+.. textOnly::
+    Dans la documentation officielle, on trouve l'utilisation des registres permettant
+    de piloter les broches:
+
+.. center::
+    .. image:: img/ddr.png
+
+.. slide::
+
+.. textOnly::
+    Sachant que, par exemple, un des boitiers à cette forme:
+
+.. center::
+    .. image:: img/dip.png
+
+.. slide::
+
+Il sera possible de changer la valeur de la broche PB2 comme cela:
+
+.. code-block:: cpp
+
+    // En-têtes fournies par AVR pour les 
+    // registres
+    #include <avr/io.h>
+
+    int main() {
+        // Paramètre en sortie
+        DDRB |= _BV(PB2);
+        // Définit la broche à "High"
+        PORTB |= _BV(PB2);
+    }
