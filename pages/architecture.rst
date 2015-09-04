@@ -398,6 +398,8 @@ Et l'épilogue::
         00000088 <__stop_program>:
           88:   ff cf           rjmp    .-2             ; 0x88 <__stop_program>
 
+.. redirection-title:: tds/td1
+
 TD
 ---
 

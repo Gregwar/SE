@@ -17,9 +17,3 @@ Support et auteur
     architecture
     bus
     features
-
-Exposés
-~~~~~~~
-
-Vous devrez présenter un exposé, par groupe de trois maximum, les
-sujets sont :doc:`disponibles ici <exposes>`
