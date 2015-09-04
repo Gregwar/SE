@@ -363,17 +363,17 @@ Il sera possible de changer la valeur de la broche PB2 comme cela:
 
     int main() {
         // Paramètre en sortie
-        DDRB |= _BV(PB2);
+        DDRB |= _BV(PB5);
         // Définit la broche à "High"
-        PORTB |= _BV(PB2);
+        PORTB |= _BV(PB5);
     }
 
 .. slide::
 
 Voici le code assembleur qui correspondra à ces instructions::
 
-      22 9a           sbi     0x04, 2 ; 4
-      2a 9a           sbi     0x05, 2 ; 5
+      25 9a           sbi     0x04, 5 ; 4
+      2d 9a           sbi     0x05, 5 ; 5
       08 95           ret
 
 .. slide::
@@ -398,3 +398,8 @@ Et l'épilogue::
         00000088 <__stop_program>:
           88:   ff cf           rjmp    .-2             ; 0x88 <__stop_program>
 
+TD
+---
+
+.. toctree::
+    tds/td1

@@ -16,7 +16,7 @@ Support et auteur
     
     architecture
     bus
-..    features
+    features
 
 Exposés
 ~~~~~~~
