@@ -64,11 +64,13 @@ Généralités
 .. discoverList::
     * Niveau de voltage?
     * Analogique/Digital?
-    * Synchrone (avec horloge) ou asynchrone?
+    * Synchrone ou asynchrone?
     * Full duplex ou half duplex?
     * Bande(s) passante(s)?
     * Robustesse?
 
+
+.. slide::
 
 Les standards
 -------------
@@ -76,7 +78,23 @@ Les standards
 UART
 ~~~~
 
+Le port série est un des bus les plus célèbre et classique. Il s'agit d'une ligne
+asynchrone (sans horloge). Cela sous-entend qu'il existe un accord sur le débit,
+que l'on apelle en général *baudrate*.
+
+.. discover::
+    Les octets sont fréquement précédé d'un *start bit*, qui permet de garder
+    la ligne synchronisée même si on ne transmet que le même niveau logique.
+
+.. slide::
+
 **TTL**
+
+La variante standard est d'utiliser deux fils (en plus de la masse), TX et RX.
+Chaque contrôleur pilote sa broche TX et écoute RX. Le signal peut de divers
+niveaux de voltage, typiquemen 5V ou 3.3V.
+
+
 
 **RS-232**
 
