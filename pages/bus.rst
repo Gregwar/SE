@@ -58,6 +58,19 @@ elle qui correspond par exemple au mode "entrée" de votre ATmega328p.
 
 .. slide::
 
+Push/Pull vs Open collector
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. textOnly::
+    On retrouve en général ces deux configurations: le push-pull (qui "drive" la ligne) ou
+    l'open-drain
+
+.. center::
+    .. image:: img/pushpull.jpg
+    .. image:: img/open-collector.jpg
+
+.. slide::
+
 Généralités
 ~~~~~~~~~~~
 
@@ -68,6 +81,8 @@ Généralités
     * Full duplex ou half duplex?
     * Bande(s) passante(s)?
     * Robustesse?
+    * Protocole?
+    * Efficacité?
 
 
 .. slide::
@@ -83,8 +98,12 @@ asynchrone (sans horloge). Cela sous-entend qu'il existe un accord sur le débit
 que l'on apelle en général *baudrate*.
 
 .. discover::
-    Les octets sont fréquement précédé d'un *start bit*, qui permet de garder
-    la ligne synchronisée même si on ne transmet que le même niveau logique.
+    Les octets sont transmis bit après bit.
+
+.. discover::
+    Les octets sont fréquement précédé d'un *start bit*, et suivi d'un *stop 
+    bit* qui permet de garder la ligne synchronisée même si on ne transmet que
+    le même niveau logique.
 
 .. slide::
 
@@ -92,28 +111,130 @@ que l'on apelle en général *baudrate*.
 
 La variante standard est d'utiliser deux fils (en plus de la masse), TX et RX.
 Chaque contrôleur pilote sa broche TX et écoute RX. Le signal peut de divers
-niveaux de voltage, typiquemen 5V ou 3.3V.
+niveaux de voltage, typiquement 5V ou 3.3V.
 
+.. discover::
+    Dans sa forme la plus standard, le série est full-duplex.
 
+.. slide::
+
+.. image:: img/rs232.jpg
+    :class: right
 
 **RS-232**
 
-**RS-485**
+Le RS-232 est une norme série standard utilisant des niveaux de voltage de -12V
+et de 12V. Cette variante est half-duplex.
 
-SPI
-~~~
+Le connecteur historique (photo ci-contre) se retrouve encore dans certains
+produits.
+
+.. discover::
+
+    **RS-485**
+
+    Le RS-485 est une autre norme half-duplex de la liaison série utilisant
+    2 fils symétriques, la différence entre ces derniers devant être de -200mV
+    ou de +200mV.
+
+.. slide::
+
+.. important::
+    Il existe des baudrate typiques, les plus célèbres sont 9600, 57600,
+    ou encore 115200 
+    L'UART se limite en général à quelques Mbit/s
+
+.. slide::
 
 I2C/TWI
 ~~~~~~~
 
+I2C (Interface 2 Câbles), ou TWI (Two Wire Interface) est un type de bus qui
+utilise deux fils (en plus de la masse), qui est synchrone et half-duplex.
+
+.. discover::
+    Les fils sont tirés vers V+ à travers des pull-up, et pilotés par des
+    collecteurs/drains ouverts.
+
+.. slide::
+
+.. center::
+    .. image:: img/i2c.png
+
+.. slide::
+
+.. textOnly::
+    I2C se base sur un système d'adressage, et un protocole contenant des acquitements.
+
+.. center::
+    .. image:: img/i2c_protocol.jpg
+
+.. slide::
+
+Dans le cas ou plusieurs maîtres entameraient une trame exactement en même temps,
+un arbitrage est réalité en monitorant le niveau de la ligne (si LOW est lu alors
+que HIGH est envoyé, la trame s'arrête).
+
+.. slide::
+
+.. important::
+    Ce protocole est très répandu et utilisé, il est cependant en général limité à
+    400kbit/s. 
+    Il existe cependant des variantes "fast" de l'I2C.
+
+.. slide::
+
+SPI
+~~~
+
+.. textOnly::
+    Le SPI (Serial Peripheral Interface) est un bus full-duplex et synchrone. Sur
+    un bus SPI est présent un maître et des esclaves.
+
+    Il est en général composé de 4 fils:
+
+    * **SCK**: L'horloge indiquant sur front montant ou descendant le moment ou un
+      bit est transmis
+    * **MOSI** et **MISO**: respectivement Master Output/Slave Input et Master Input/Slave
+      Output, les lignes qui transmettent les données
+    * **CS**: Le "Chip Select", qui indique à chaque périphérique si il est activé ou non
+
+.. center::
+    .. image:: img/spi.png
+
+.. slide::
+
+.. textOnly::
+    Typiquement, le maître écrit une opération de lecture ou d'écriture sur sa ligne, puis
+    continue éventuellement d'envoyer des coups d'horloge pour lire les données depuis 
+    l'esclave.
+
+.. center::
+    .. image:: img/spi_diagram.jpg
+
+.. slide::
+
+.. important::
+    SPI est également très répandu, car il permet d'atteindre des grandes vitesses (plusieurs
+    dizaine de Mbit/s).
+
+.. slide::
+
 CAN
 ~~~
 
-USB
-~~~
+Le protocole CAN est un protocole série, basé sur un accord préalable de rapidité (baud rate).
+Il est très utilisé dans le monde industriel et automobile. Physiquement, il exploite deux lignes
+CANH et CANL, et se base sur un état dominant et récessif.
 
-Ethernet
-~~~~~~~~
+.. textOnly::
+    Il comporte un arbitrage, comme I2C, et les messages démarrent par un identifiant qui sert
+    justement à ajuster la priorité. Chaque trame comporte également un somme de contrôle CRC.
+
+.. slide::
+
+.. center::
+    .. image:: img/can.png
 
 Exemples
 --------

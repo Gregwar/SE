@@ -23,8 +23,18 @@ Les GPIOs
 Interruptions
 -------------
 
+Timers
+------
+
+Horloge
+PLL
+Prescaler
+PWM
+etc
+
 DMA
 ---
 
 MMU
 ---
+
