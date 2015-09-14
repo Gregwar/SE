@@ -9,6 +9,9 @@ Support et auteur
 .. important::
     Grégoire Passault 
     *g.passault@gmail.com*
+
+    Olivier Ly
+    *ly@labri.fr*
  
     `http://gregwar.com/se/ <http://gregwar.com/se/>`_
 
