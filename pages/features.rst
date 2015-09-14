@@ -73,6 +73,9 @@ ADC
 L'ADC (ou CAN) est l'opération inverse du DAC, qui consiste à échantilloner un niveau de 
 voltage pour obtenir une valeur numérique.
 
+Les ADC fonctionnent en général sur la base d'un design de DAC, comme vu ci-dessus, et comparent
+le voltage produit avec le voltage inconnu.
+
 .. slide::
 
 Interruptions
