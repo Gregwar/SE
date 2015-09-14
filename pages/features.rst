@@ -81,6 +81,9 @@ le voltage produit avec le voltage inconnu.
 Interruptions
 -------------
 
+Vecteur interruption
+Instruction spéciale RETI (mode interruption)
+
 Timers
 ------
 

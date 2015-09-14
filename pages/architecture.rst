@@ -291,7 +291,7 @@ Que fait cette macro?
 
 .. code-block:: cpp
    
-    #define BIT(n) (1<<(n))
+    #define _BV(n) (1<<(n))
 
 .. slide::
     
@@ -299,7 +299,7 @@ Que fait ce bout de code?
 
 .. code-block:: cpp
 
-    PORTD |= BIT(3);
+    PORTD |= _BV(3);
 
 .. slide::
 
@@ -307,7 +307,7 @@ Et celui-ci?
 
 .. code-block:: cpp
 
-    PORTD &= ~BIT(3);
+    PORTD &= ~_BV(3);
 
 .. slide::
 
@@ -315,7 +315,7 @@ Et celui-ci?
 
 .. code-block:: cpp
 
-    PORTD &= ~(BIT(3) | BIT(4));
+    PORTD &= ~(_BV(3) | _BV(4));
 
 .. slide::
 
@@ -323,7 +323,7 @@ Et celui-ci?
 
 .. code-block:: cpp
 
-    if (PORTD & BIT(3)) {
+    if (PORTD & _BV(3)) {
         // ...
     }
 
