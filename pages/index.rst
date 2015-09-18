@@ -3,14 +3,14 @@ Sommaire
 
 .. slide::
 
-Support et auteur
-~~~~~~~~~~~~~~~~~
+Support et auteurs
+~~~~~~~~~~~~~~~~~~
 
 .. important::
     Grégoire Passault 
     *g.passault@gmail.com*
 
-    Olivier Ly
+    Olivier Ly 
     *ly@labri.fr*
  
     `http://gregwar.com/se/ <http://gregwar.com/se/>`_
@@ -20,3 +20,9 @@ Support et auteur
     architecture
     bus
     features
+
+Projet
+~~~~~~
+
+:doc:`La documentation relative au projet se trouve ici <project>`
+

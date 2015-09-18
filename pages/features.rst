@@ -1,13 +1,10 @@
 Les fonctionnalités
 ===================
 
-Gestion des bus
----------------
-
 .. slide::
 
 Les GPIOs
-~~~~~~~~~
+---------
 
 .. textOnly::
     Les GPIOs (General Purpose Input/Outputs) sont des broches que l'on peut piloter
@@ -20,10 +17,16 @@ Les GPIOs
 .. center::
     .. image:: img/atmega-pin.png
 
+
+.. slide::
+
+Les broches sont en général utilisable en GPIO et peuvent passer en mode alternatif,
+étant alors gérée par une fonctionnalité du contrôleur (pensez par exemple à l'UART).
+
 .. slide::
 
 DAC
-~~~
+---
 
 Le DAC (Ou CNA) est une conversion numérique vers analogique, elle permet à partir d'une
 valeur constituée de plusieurs bits en mémoire (par ex de 0 à 1023) de créer une valeur 
@@ -73,19 +76,77 @@ ADC
 L'ADC (ou CAN) est l'opération inverse du DAC, qui consiste à échantilloner un niveau de 
 voltage pour obtenir une valeur numérique.
 
-Les ADC fonctionnent en général sur la base d'un design de DAC, comme vu ci-dessus, et comparent
-le voltage produit avec le voltage inconnu.
+Le design d'un ADC est souvent proche du design dual DAC, en comparant le voltage avec l'entrée
+à échantilloner.
+
+.. slide::
+
+.. center::
+    .. image:: img/adc_flash.png
+
+.. textOnly::
+    Par exemple, l'ADC "flash" (ci-dessus) est le dual du DAC thermomètre, en contenant
+    toutes les possibilités de voltage mesurables.
 
 .. slide::
 
 Interruptions
 -------------
 
-Vecteur interruption
-Instruction spéciale RETI (mode interruption)
+.. discover::
+    Mécanisme "événementiel": le processeur va sauter à une adresse sur certaines
+    conditions.
+
+.. textOnly::
+    Le code binaire que l'on placera sur un micro contrôleur commencera par une table
+    des interruptions. A chaque case de cette table, on trouvera l'adresse à laquelle il faut
+    se rendre si une interruption donnée se déclenche.
+
+.. slide::
+
+.. center::
+    .. image:: img/interrupts.png
+
+.. slide::
+
+Par exemple, la récéption d'un octet sur l'USART pourra déclencher l'appel à du
+code utilisateur, ce qui permet de libérer du temps pour faire autre chose.
+
+Cette version, dite en scrutation:
+
+.. code-block:: c
+    while (!(UCSR0A&_BV(RXC0)));
+    // Reception de l'octet
+
+Sera plus flexible en utilisant l'interruption correspondante:
+
+.. code-block:: c
+    // Active l'interruption à la réception
+    UCSR0B |= _BV(RXCIE0); 
+    ...
+    ISR(USART_RX_vect) {
+        // Reception de l'octet
+    }
+
+.. vi fix =|
+
+.. slide::
+
+.. warning::
+    **Attention** 
+    Le fait d'être dans une interruption bloque l'arrivée des autres
+    interruptions (selon une politique plus ou moins sophistiquée). Le code d'une
+    interruption est en général court et simple (stocker un octet dans un tableau,
+    passer un flag à vrai etc.).
+
+.. slide::
+
+.. image:: img/quartz.jpg
+    :class: right
 
 Timers
 ------
+
 
 Horloge
 PLL

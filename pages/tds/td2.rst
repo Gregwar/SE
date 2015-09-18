@@ -38,6 +38,12 @@ d'informations numériques de produire un voltage voulu.
     de parler à la puce.**
 
 .. step::
+
+    **Vous pouvez alors tester la communication avec la puce** 
+    Pour ce faire, utilisez simplement les broches pour envoyer "à la main" un signal
+    permettant de sortir un échantillon.
+
+.. step::
     **Implémentez le bus adéquat dans votre code**
     Et envoyez une valeur dans votre DAC. Contrôlez que votre code marche avec, par exemple,
     un multimètre.
