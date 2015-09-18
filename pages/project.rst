@@ -9,8 +9,6 @@ Prérequis
 Vous aurez besoin de :doc:`l'architecture du TD1 <tds/td1>`, ainsi que du composant
 MCP4822 utilisé lors du :doc:`TD2 <tds/td2>`.
 
-Vous devrez 
-
 Le timing
 ~~~~~~~~~
 
