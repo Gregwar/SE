@@ -24,5 +24,5 @@ Support et auteurs
 Projet
 ~~~~~~
 
-:doc:`La documentation relative au projet se trouve ici <project>`
+**:doc:`La documentation relative au projet se trouve ici <project>`**
 

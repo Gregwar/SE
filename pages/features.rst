@@ -147,12 +147,45 @@ Sera plus flexible en utilisant l'interruption correspondante:
 Timers
 ------
 
+Le temps est basé sur un composant de base nommé le **quartz** qui génère un signal
+périodique à une fréquence précise.
 
-Horloge
-PLL
-Prescaler
+.. discover::
+    Cette horloge peut être accélérée (à l'aide de PLL) ou réduite (à l'aide de divider
+    ou de prescaler).
+
+.. slide::
+
+Fonctionnement
+~~~~~~~~~~~~~~
+
+Un timer est une fonctionnalité configurable, qui aura pour effet d'incrémenter un registre
+à une certaine fréquence.
+
+.. discover::
+    Lorsque ce registre atteindra sa valeur maximale, il repartira à 0, c'est le dépassement
+    (*overflow*).
+
+.. discover::
+    C'est en général à ce moment là qu'une interruption peut avoir lieu, pour déclencher un
+    événement périodique.
+
+.. slide::
+
 PWM
-etc
+~~~
+
+Un timer est souvent accompagné d'un module permettant de générer des PWM hardware.
+
+Dans ce cas, l'état d'une broche peut être modifiée selon l'état du timer, et ce 
+automatiquement par le microcontrôleur.
+
+.. slide::
+
+.. center::
+    .. image:: img/fast_pwm_example.png
+
+.. slide::
 
 DMA
 ---
