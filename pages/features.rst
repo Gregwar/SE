@@ -93,9 +93,36 @@ Le design d'un ADC est souvent proche du design dual DAC, en comparant le voltag
 Interruptions
 -------------
 
+Considérons le code suivant:
+
+.. code-block:: c
+
+    void uart_send(char *str) {
+        while (*str != '\0') {
+            while (UCSR0A & _BV(UDRE0));
+            UDRE0 = *(str++);
+        }
+    }
+
+.. vi fix*
+
+.. slideOnly::
+    .. discoverList::
+    * Imaginons que nous soyons à 9600 bauds, avec 1 bit start
+      et 1 bit stop
+    * Combien de temps faudrait t-il pour executer ``uart_send("Bonjour");``?
+    * Sur un micro-contrôleur à 16Mhz, à combien de cycle cela correspond?
+
+.. textOnly::
+    Ce code est fonctionnel, mais très gourmand en resources, car il occupera
+    le processeur pendant environ 6.5ms (soit plus de 100000 cycles sur un processeur
+    à 16Mhz).
+
+.. slide:: 
+
 .. discover::
-    Mécanisme "événementiel": le processeur va sauter à une adresse sur certaines
-    conditions.
+    Les interruptions sont des mécanismes "événementiel": le processeur va "sauter" à 
+    une adresse sur certaines conditions.
 
 .. textOnly::
     Le code binaire que l'on placera sur un micro contrôleur commencera par une table
@@ -110,7 +137,8 @@ Interruptions
 .. slide::
 
 Par exemple, la récéption d'un octet sur l'USART pourra déclencher l'appel à du
-code utilisateur, ce qui permet de libérer du temps pour faire autre chose.
+code utilisateur, ce qui permet d'éviter de "scruter" pour vérifier si un octet a
+été reçu.
 
 Cette version, dite en scrutation:
 
@@ -190,6 +218,40 @@ automatiquement par le microcontrôleur.
 DMA
 ---
 
+Les interruptions permettent d'alléger la plupart des opérations standards, telles
+que l'envoi/réception de données.
+
+Imaginez, sur un contrôleur à 16mhz une interruption qui:
+
+* Est levée à chaque octet reçu sur un bus à 1 méga bauds
+* Dure 64 cycles 
+
+.. slideOnly::
+    .. discover::
+    * Combien de temps s'écoule entre chaque interruption?
+    * Combien de temps dure une interruption?
+
+.. textOnly::
+    Un tel système serait interrompu en permanence, car l'interruption
+    durerait 8µs et serait executée environ toutes les 8µs.
+
+.. slide::
+
+Une solution: le DMA (Direct Memory Access), qui est disponible sur un grand nombre
+de processeur (mais pas l'ATmega par exemple). 
+
+.. discover::
+    Le principe: configurer un système qui agira directement sur le bus mémoire, comme
+    le ferait le processeur, mais en exécutant des actions simples et répétitives. 
+
+.. discover::
+    Par exemple, le DMA peut récupérer des données depuis un port série et les écrire
+    directement dans un buffer en mémoire.
+
+
+.. slide::
+
 MMU
 ---
+
 
