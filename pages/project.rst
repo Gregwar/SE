@@ -1,35 +1,46 @@
 Projet
 ======
 
-Le but du projet est d'utiliser votre carte équipée d'un ATmega328p pour produire du son.
+Le but du projet est d'utiliser votre carte équipée d'un ATmega328p pour capturer des
+données et les enregistrer dans des formats standard représentant des signaux digitaux (VCD).
+Ensuite, vous pourrez visualiser ces signaux à l'aide de logiciels tels que GTKWave, mais aussi
+effectuer des analyses logiques.
 
-Prérequis
-~~~~~~~~~
+.. important::
 
-Vous aurez besoin de :doc:`l'architecture du TD1 <tds/td1>`, ainsi que du composant
-MCP4822 utilisé lors du :doc:`TD2 <tds/td2>`.
+    Le projet est à réaliser par équipe de 3 et devra être versionné sur un dépôt sur Bitbucket
+    (ou autre) auquel j'aurai accès.
 
-Le timing
-~~~~~~~~~
+Partie 1: acquisition
+~~~~~~~~~~~~~~~~~~~~~
 
-La première partie du projet consiste en la configuration des timers de votre carte, afin
-d'être capable d'envoyer des échantillons en sortie à une fréquence précise.
+En programmant votre carte, et éventuellement en utilisant un programme du coté de votre PC,
+vous devrez être en mesure de produire des fichiers VCD qui représentera l'acquisition d'une
+ou de plusieurs ligne de signaux.
 
-Nous choisirons 44100Hz comme fréquence d'échantillonage, car il s'agit d'un standard,
-afin de pouvoir représenter des sons jusqu'à environ 22Khz, la limite de l'audible.
+Le challenge de cette partie repose sur la capacité à mesurer des signaux les plus rapides possibles.
 
-Production d'un son sinusoïdal
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Partie 2: analyse
+~~~~~~~~~~~~~~~~~
 
-Dans un second temps, vous devrez produire un son sinusoïdal sur la sortie de votre carte,
-vous pourrez brancher un port Jack pour brancher un casque et écouter.
+Vous écrirez ensuite un analyseur logique, c'est à dire un programme qui prendra en entrée vos
+acquisitions (au format VCD) et permettra d'analyser les lignes logiques.
 
-Vous pourrez alors enchaîner plusieurs sinus de plusieurs durées pour produire une mélodie.
+1) UART
+-------
 
-Envoi des échantillons depuis un PC
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Votre programme devra être en mesure, à partir d'un dump VCD d'une communication série, de retrouver
+les données qui ont été échangées.
 
-Enfin, vous enverrez les échantillons depuis votre ordinateur afin de les retranscrire dans
-le DAC.
+Vous pourrez vous restreindre à une configuration classique (type 8N1), mais devrez supporter les
+différentes baudrates (en lui précisant puis en le détectant automatiquement).
 
-Attention, le timing de cette opération risque d'être délicat.
+2) PS/2
+-------
+
+Une autre analyse que vous pourrez réaliser est celle d'une trame PS/2, sur les anciens claviers afin
+de retrouver les touches qui ont été appuyées.
+
+
+
+
