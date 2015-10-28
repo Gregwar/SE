@@ -41,6 +41,8 @@ différentes baudrates (en lui précisant puis en le détectant automatiquement)
 Une autre analyse que vous pourrez réaliser est celle d'une trame PS/2, sur les anciens claviers afin
 de retrouver les touches qui ont été appuyées.
 
+Voici un diagrame du port PS/2 et, en correspondance les couleurs des fils du clavier de la salle:
 
-
+.. center::
+    .. image:: /img/ps2.png
 
