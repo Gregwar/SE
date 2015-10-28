@@ -24,6 +24,5 @@ Support et auteurs
 Projet
 ~~~~~~
 
-Bientôt disponible
-.. **:doc:`La documentation relative au projet se trouve ici <project>`**
+**:doc:`Les consignes du projets se trouvent ici <project>`**
 
