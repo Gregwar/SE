@@ -236,10 +236,7 @@ CANH et CANL, et se base sur un état dominant et récessif.
 .. center::
     .. image:: img/can.png
 
-Exemples
---------
-
-Lecture de datasheets pour comprendre les problèmes liés au timing etc.
+.. slide::
 
 .. redirection-title:: tds/td2
 
