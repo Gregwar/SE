@@ -248,10 +248,10 @@ de processeur (mais pas l'ATmega par exemple).
     Par exemple, le DMA peut récupérer des données depuis un port série et les écrire
     directement dans un buffer en mémoire.
 
+.. redirection-title:: tds/td3
 
-.. slide::
-
-MMU
+TD
 ---
 
-
+.. toctree::
+    tds/td3
