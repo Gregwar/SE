@@ -20,6 +20,7 @@ Support et auteurs
     architecture
     bus
     features
+    sensact
 
 Projet
 ~~~~~~
