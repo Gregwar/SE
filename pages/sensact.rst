@@ -2,7 +2,8 @@
 Capteurs et Actuateurs
 ======================
 
-Par groupe de 2, essayer de:
+Consignes
+~~~~~~~~~
 
 * Expliquer comment ça marche
 * Montrer des exemples d'applications
@@ -10,7 +11,8 @@ Par groupe de 2, essayer de:
   et expliquer les différences de prix (précision, robustesse...)
   sur la documentation
 
-Parmis les capteurs:
+Capteurs à chosir
+~~~~~~~~~~~~~~~~~
 
 * Accéleromètre
 * Gyroscope
