@@ -222,7 +222,7 @@ pas d'ordonancement, pas d'espace utilisateur/noyau, pas d'appel système etc.
 
 **Optimisations**
 
-Il est nécessaire d'activer les **optimisations** du compilateur pour 
+Il est nécessaire d'activer les **optimisations** du compilateur pour
 travailler sur des micro-controleurs. Typiquement ``-Os``:
 
 .. code-block:: bash
