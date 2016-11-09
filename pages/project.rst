@@ -32,6 +32,15 @@ La mise en place de cette communication série avec la carte est vitale pour
 pouvoir dialoguer avec la carte pendant qu'elle tourne, et ainsi débugger ou pouvoir
 la contrôler.
 
+Un numéro est gravé sur l'arrière de votre carte, il correspond à votre numéro de
+groupe. La puce Bluetooth a déjà été configurée avec les paramètres:
+
+    Nom: POV**N** 
+    Pin: 000**N** 
+    Baudrate: 38400
+
+Où N est votre numéro de groupe
+
 #=) Pilotage des LEDs
 ---------------------
 
