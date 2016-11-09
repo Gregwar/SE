@@ -17,7 +17,7 @@ La carte comporte un processeur sorti d'usine, il n'y a pas de bootloader
 logiciel dessus, uniquement les bootloader hardware. Vous devrez pour le
 programmer utiliser un boîtier ISP.
 
-Indications pour avrdude: `-c avrisp2 -P usb`
+Indications pour avrdude: ``-c avrisp2 -P usb``
 
 Tout d'abord, prenez en main cette manière de programmer la puce.
 
