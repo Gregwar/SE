@@ -7,7 +7,7 @@ Support et auteurs
 ~~~~~~~~~~~~~~~~~~
 
 .. important::
-    Grégoire Passault
+    Grégoire Passault  
     *g.passault@gmail.com*
 
     Rémi Fabre
