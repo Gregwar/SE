@@ -7,16 +7,16 @@ Support et auteurs
 ~~~~~~~~~~~~~~~~~~
 
 .. important::
-    Grégoire Passault 
+    Grégoire Passault
     *g.passault@gmail.com*
 
-    Olivier Ly 
-    *ly@labri.fr*
- 
+    Rémi Fabre
+    *remifabre1800@gmail.com*
+
     `http://gregwar.com/se/ <http://gregwar.com/se/>`_
 
 .. toctree::
-    
+
     architecture
     bus
     features
@@ -26,4 +26,3 @@ Projet
 ~~~~~~
 
 **:doc:`Les consignes du projets se trouvent ici <project>`**
-
