@@ -7,10 +7,10 @@ Support et auteurs
 ~~~~~~~~~~~~~~~~~~
 
 .. important::
-    Grégoire Passault  
+    Grégoire Passault
     *g.passault@gmail.com*
 
-    Rémi Fabre
+    Rémi Fabre  
     *remifabre1800@gmail.com*
 
     `http://gregwar.com/se/ <http://gregwar.com/se/>`_
