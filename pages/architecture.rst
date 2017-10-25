@@ -67,11 +67,11 @@ Qu'est-ce qu'un système embarqué?
 Dans le cadre de ce cours, un système embarqué sera:
 
 .. discoverList::
-* Composé d'au moins une puce programmable 
+* Composé d'au moins une puce programmable
 * Petit, ce qui implique des difficultés
-  * D'encombrement 
+  * D'encombrement
   * De puissance
-  * De performance 
+  * De performance
   * De temps réel
 
 .. slide::
@@ -142,7 +142,7 @@ Mémoire
 Il existe plusieurs forme de mémore:
 
 * La RAM
-* La flash (ROM) 
+* La flash (ROM)
 * L'EEEPROM
 
 .. slide::
@@ -170,7 +170,7 @@ en général accessibles via des **adresses**.
 
 .. slide::
 
-Instructions binaire, assembleur
+Instructions binaires, assembleur
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Le coeur du processeur déchiffre les instructions et execute les actions en
@@ -188,7 +188,7 @@ conséquence.
 Chargement du programme
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Les micro-contrôleurs proposent en général plusieurs manière d'être programmés en
+Les micro-contrôleurs proposent en général plusieurs manières d'être programmés en
 sortie d'usine (JTAG, SPI, série...)
 
 .. discover::
@@ -203,7 +203,7 @@ Compilation depuis C
 **Cross-compilation**
 
 Lorsque nous travaillerons sur des petits binaires, nous allons utiliser
-la **cross-compilation**, c'est à dire que nous compilerons pour une 
+la **cross-compilation**, c'est à dire que nous compilerons pour une
 autre architecture que notre ordinateur.
 
 Pour cela, il suffit de disposer de la chaîne de compilation adéquate.
@@ -231,7 +231,7 @@ travailler sur des micro-controleurs. Typiquement ``-Os``:
 
 .. textOnly::
     Cette option demande au compilateur de réduire au plus possible la
-    taille du fichier produit. 
+    taille du fichier produit.
 
 .. slide::
 
@@ -290,11 +290,11 @@ travailler sur des micro-controleurs. Typiquement ``-Os``:
 Que fait cette macro?
 
 .. code-block:: cpp
-   
+
     #define _BV(n) (1<<(n))
 
 .. slide::
-    
+
 Que fait ce bout de code?
 
 .. code-block:: cpp
@@ -357,7 +357,7 @@ Il sera possible de changer la valeur de la broche PB2 comme cela:
 
 .. code-block:: cpp
 
-    // En-têtes fournies par AVR pour les 
+    // En-têtes fournies par AVR pour les
     // registres
     #include <avr/io.h>
 

@@ -41,7 +41,7 @@ groupe. La puce Bluetooth a déjà été configurée avec les paramètres:
 
     Nom: POV**N**
     Pin: 000**N**
-    Baudrate: 38400
+    Baud rate: 38400
 
 Où N est votre numéro de groupe
 

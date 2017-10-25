@@ -95,13 +95,13 @@ UART
 
 Le port série est un des bus les plus célèbre et classique. Il s'agit d'une ligne
 asynchrone (sans horloge). Cela sous-entend qu'il existe un accord sur le débit,
-que l'on apelle en général *baudrate*.
+que l'on apelle en général *baud rate*.
 
 .. discover::
     Les octets sont transmis bit après bit.
 
 .. discover::
-    Les octets sont fréquement précédé d'un *start bit*, et suivi d'un *stop 
+    Les octets sont fréquement précédé d'un *start bit*, et suivi d'un *stop
     bit* qui permet de garder la ligne synchronisée même si on ne transmet que
     le même niveau logique.
 
@@ -110,11 +110,11 @@ que l'on apelle en général *baudrate*.
 **TTL**
 
 La variante standard est d'utiliser deux fils (en plus de la masse), TX et RX.
-Chaque contrôleur pilote sa broche TX et écoute RX. Le signal peut de divers
+Chaque contrôleur pilote sa broche TX et écoute RX. Le signal peut être de divers
 niveaux de voltage, typiquement 5V ou 3.3V.
 
 .. discover::
-    Dans sa forme la plus standard, le série est full-duplex.
+    Dans sa forme la plus standard, le bus série est full-duplex.
 
 .. slide::
 
@@ -140,8 +140,8 @@ produits.
 .. slide::
 
 .. important::
-    Il existe des baudrate typiques, les plus célèbres sont 9600, 57600,
-    ou encore 115200 
+    Il existe des baud rate typiques, les plus célèbres sont 9600, 57600,
+    ou encore 115200
     L'UART se limite en général à quelques Mbit/s
 
 .. slide::
@@ -172,14 +172,14 @@ utilise deux fils (en plus de la masse), qui est synchrone et half-duplex.
 .. slide::
 
 Dans le cas ou plusieurs maîtres entameraient une trame exactement en même temps,
-un arbitrage est réalité en monitorant le niveau de la ligne (si LOW est lu alors
+un arbitrage est réalisé en monitorant le niveau de la ligne (si LOW est lu alors
 que HIGH est envoyé, la trame s'arrête).
 
 .. slide::
 
 .. important::
     Ce protocole est très répandu et utilisé, il est cependant en général limité à
-    400kbit/s. 
+    400kbit/s.
     Il existe cependant des variantes "fast" de l'I2C.
 
 .. slide::
@@ -206,7 +206,7 @@ SPI
 
 .. textOnly::
     Typiquement, le maître écrit une opération de lecture ou d'écriture sur sa ligne, puis
-    continue éventuellement d'envoyer des coups d'horloge pour lire les données depuis 
+    continue éventuellement d'envoyer des coups d'horloge pour lire les données depuis
     l'esclave.
 
 .. center::
