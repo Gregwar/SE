@@ -21,12 +21,21 @@ d'informations numériques de produire un voltage voulu.
 
 .. step::
 
+    **Essayez de répondre aux questions suivantes:**
+
+    * A quoi sert la broche LDAC?
+    * Quelle est la résolution du DAC?
+    * Quelle est la conversion effectuée entre numérique et analogique? (selon quelle équation)
+    * Combien d'échantillons par seconde maximum pourrait t-on envoyer à la carte?
+
+.. step::
+
     **Choisissez les bonnes broches de votre carte pour effectuer un câblage qui permettra
     de parler à la puce.**
 
 .. step::
 
-    **Vous pouvez alors tester la communication avec la puce** 
+    **Vous pouvez alors tester la communication avec la puce**
     Pour ce faire, utilisez simplement les broches pour envoyer "à la main" un signal
     permettant de sortir un échantillon.
 
@@ -41,5 +50,3 @@ Intégration
 .. step::
     Utilisez maintenant votre code série pour définir la valeur de l'échantillon que vous
     allez transmettre à votre DAC.
-
-
