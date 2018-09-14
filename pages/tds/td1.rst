@@ -8,7 +8,7 @@ TD1: Bye bye, Arduino
 Le but de ce court TD est de programmer une carte **Arduino Uno** sans utiliser l'IDE
 proposé par **Arduino**.
 
-Présentation et resources
+Présentation et ressources
 -------------------------
 
 .. important::
@@ -47,7 +47,7 @@ Les principales étapes que vous devrez suivre:
 * Utilisez ``avr-objcopy`` afin de produire un binaire "brut" (non elf)
 * Utilisez ``avrdude``, outil permettant de programmer la carte
 
-Vous pourrez par exemple tapper ``make`` pour produire le binaire puis ``make install`` pour
+Vous pourrez par exemple taper ``make`` pour produire le binaire puis ``make install`` pour
 l'installer à bord de votre carte.
 
 N'oubliez pas de commiter.
@@ -59,7 +59,7 @@ Votre board **Arduino Uno** est connectée à un émulateur USB/Série, qui perm
 à votre ordinateur de communiquer avec elle.
 
 .. step::
-    Ecrivez du code qui permettra d'écrire ou de lire des données depuis le port série.
+    Écrivez du code qui permettra d'écrire ou de lire des données depuis le port série.
 
     Vous pourrez par exemple utiliser l'outil ``cu`` pour tester la communication
     depuis un terminal.

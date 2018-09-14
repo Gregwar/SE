@@ -26,7 +26,7 @@ d'informations numériques de produire un voltage voulu.
     * A quoi sert la broche LDAC?
     * Quelle est la résolution du DAC?
     * Quelle est la conversion effectuée entre numérique et analogique? (selon quelle équation)
-    * Combien d'échantillons par seconde maximum pourrait t-on envoyer à la carte?
+    * Combien d'échantillons par seconde maximum pourrait-on envoyer à la carte?
 
 .. step::
 

@@ -8,7 +8,7 @@ Les bus
 Présentation
 ------------
 
-Le besoin d'avoir des protocoles commun pour faire dialoguer les CIs/composants
+Le besoin d'avoir des protocoles communs pour faire dialoguer les CIs/composants
 a donné naissance à certains bus standards.
 
 .. slide::
@@ -38,7 +38,7 @@ elle qui correspond par exemple au mode "entrée" de votre ATmega328p.
     .. image:: img/tristate.png
 
 .. textOnly::
-    Certaines lignes sont cependant pilotées seulement par moment, et "relachée" à d'autre,
+    Certaines lignes sont cependant pilotées seulement par moment, et "relâchées" à d'autres,
     elles sont alors flottantes. On utilise en général une **résistance de tirage**, qui
     leur impose un niveau logique, on dit qu'elles sont en haute impédance.
 
@@ -51,7 +51,7 @@ elle qui correspond par exemple au mode "entrée" de votre ATmega328p.
 
 .. textOnly::
     Une autre configuration que l'on trouve est le collecteur ouvert (ou drain ouvert), qui
-    signifie qu'un transistor prêt à être fermé est acollé à cette broche.
+    signifie qu'un transistor prêt à être fermé est attaché à cette broche.
 
 .. center::
     .. image:: img/opencollector.png
@@ -78,7 +78,7 @@ Généralités
     * Niveau de voltage?
     * Analogique/Digital?
     * Synchrone ou asynchrone?
-    * Full duplex ou half duplex?
+    * Full duplex ou *half duplex*?
     * Bande(s) passante(s)?
     * Robustesse?
     * Protocole?
@@ -95,13 +95,13 @@ UART
 
 Le port série est un des bus les plus célèbre et classique. Il s'agit d'une ligne
 asynchrone (sans horloge). Cela sous-entend qu'il existe un accord sur le débit,
-que l'on apelle en général *baud rate*.
+que l'on appelle en général *baud rate*.
 
 .. discover::
     Les octets sont transmis bit après bit.
 
 .. discover::
-    Les octets sont fréquement précédé d'un *start bit*, et suivi d'un *stop
+    Les octets sont fréquemment précédés d'un *start bit*, et suivi d'un *stop
     bit* qui permet de garder la ligne synchronisée même si on ne transmet que
     le même niveau logique.
 
@@ -164,7 +164,7 @@ utilise deux fils (en plus de la masse), qui est synchrone et half-duplex.
 .. slide::
 
 .. textOnly::
-    I2C se base sur un système d'adressage, et un protocole contenant des acquitements.
+    I2C se base sur un système d'adressage, et un protocole contenant des acquittements.
 
 .. center::
     .. image:: img/i2c_protocol.jpg
@@ -216,7 +216,7 @@ SPI
 
 .. important::
     SPI est également très répandu, car il permet d'atteindre des grandes vitesses (plusieurs
-    dizaine de Mbit/s).
+    dizaines de Mbit/s).
 
 .. slide::
 
