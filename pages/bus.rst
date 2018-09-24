@@ -71,6 +71,18 @@ Push/Pull vs Open collector
 
 .. slide::
 
+Unités
+~~~~~~
+
+* Ko ?
+* Kio ?
+* Kb ?
+* KB ?
+* Kib ?
+* KiB ?
+
+.. slide::
+
 Généralités
 ~~~~~~~~~~~
 
