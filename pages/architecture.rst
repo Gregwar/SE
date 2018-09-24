@@ -58,6 +58,41 @@ Loi de May
 
 .. slide::
 
+Désenchantement logiciel
+-------------------------
+
+`Article original <https://medium.com/@rfallet/desenchantement-logiciel-ffba8eef7b8a>`_
+
+.. discoverList::
+
+    * Le logiciel est **lent**
+        * Windows 10 met **30 minutes** à se mettre à jour ...
+        * ... dans le même temps, on aurait réécrit **5 fois le SSD entier**
+        * Pourquoi un téléphone met **30 à 60 secondes à démarrer** ?
+    * Le logiciel est **énorme**
+        * Windows 95 pesait **30 Mo** ...
+        * ... l'application clavier de Google (Android) consomme **150 Mo**
+    * Le logiciel est **vite obsolète**
+
+.. slide::
+
+.. center::
+    .. image:: /img/python_vs_rust.png
+        :width: 750
+
+.. slide::
+
+.. center::
+    .. image:: /img/xkcd_soft.gif
+
+.. slide::
+
+.. center::
+    .. image:: /img/xkcd_abstraction.png
+        :width: 750
+
+.. slide::
+
 Qu'est-ce qu'un système embarqué?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
