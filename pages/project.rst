@@ -17,18 +17,23 @@ qui va avec vous seront fournis.
 #~) Programmation
 -------------------------------------
 
+.. warning::
+
+    Attention: le processeur n'est pas le même que celui utilisé lors des TDs, il
+    s'agit d'un *ATmega128*.
+
 La carte comporte un processeur sorti d'usine, il n'y a pas de bootloader
-logiciel dessus, uniquement les bootloader hardware. Vous devrez pour le
-programmer utiliser un boîtier ISP.
+logiciel dessus, uniquement les bootloaders hardware. Vous devrez pour le
+programmer utiliser un boîtier JTAG.
 
-Indications pour avrdude: ``-c avrisp2 -P usb``
+Indications pour avrdude: ``-c jtagmkI -P /dev/ttyUSB0``
 
-Tout d'abord, prenez en main cette manière de programmer la puce.
+Adaptez tout d'abord votre ``Makefile`` de manière à pouvoir programmer la carte.
 
 #~) Communication série
 -----------------------
 
-La carte est équipée d'une puce bluetooth HC-05. Pour communiquer avec, vous
+La carte est équipée d'une puce *bluetooth HC-05*. Pour communiquer avec, vous
 aurez besoin d'avoir un port série fonctionnel sur votre carte, et de la configurer
 de la bonne manière.
 
