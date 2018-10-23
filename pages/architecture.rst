@@ -37,7 +37,7 @@ Loi de Moore
 .. textOnly::
     L'évolution technologique qui nous a conduit a la situation actuelle
     a empilé des couches d'abstractions qui nous permettent de profiter
-    d'un environement riche et facile d'accès.
+    d'un environnement riche et facile d'accès.
 
     Cependant, un informaticien moderne est peu averti du fonctionnement
     du matériel au plus bas niveau.
@@ -55,6 +55,41 @@ Loi de May
 
 .. important::
     Software efficiency halves every 18 months, compensating Moore's law.
+
+.. slide::
+
+Désenchantement logiciel
+-------------------------
+
+`Article original <https://medium.com/@rfallet/desenchantement-logiciel-ffba8eef7b8a>`_
+
+.. discoverList::
+
+    * Le logiciel est **lent**
+        * Windows 10 met **30 minutes** à se mettre à jour ...
+        * ... dans le même temps, on aurait réécrit **5 fois le SSD entier**
+        * Pourquoi un téléphone met **30 à 60 secondes à démarrer** ?
+    * Le logiciel est **énorme**
+        * Windows 95 pesait **30 Mo** ...
+        * ... l'application clavier de Google (Android) consomme **150 Mo**
+    * Le logiciel est **vite obsolète**
+
+.. slide::
+
+.. center::
+    .. image:: /img/python_vs_rust.png
+        :width: 750
+
+.. slide::
+
+.. center::
+    .. image:: /img/xkcd_soft.gif
+
+.. slide::
+
+.. center::
+    .. image:: /img/xkcd_abstraction.png
+        :width: 750
 
 .. slide::
 
@@ -82,13 +117,13 @@ Du silicium au programme
 .. textOnly::
     Les circuits intégrés (puces électroniques) sont la base de toute
     architecture matérielle embarquée. Ils sont construits à partir de
-    galettes nommées wafers.
+    galettes nommées **wafers**.
 
 .. center::
     .. image:: img/insolation.png
 
 .. textOnly::
-    Ces galettes sont principalement traitées par photolitographie à l'aide
+    Ces galettes sont principalement traitées par photolithographie à l'aide
     de masques optiques afin de reproduire des motifs qui formeront les
     composants (transistor, diode, résistance ...)
 
@@ -98,7 +133,7 @@ Du silicium au programme
     .. image:: img/wafer.jpg
 
 .. textOnly::
-    Ces morceaux de sillicium sont alors packagés dans des boitiers qui pourront
+    Ces morceaux de silicium sont alors packagés dans des boîtiers qui pourront
     être assemblés sur des cartes électroniques.
 
 .. slide::
@@ -119,7 +154,7 @@ Du silicium au programme
 Les CIs
 ~~~~~~~
 
-Il existe plusieurs genre de circuits intégrés:
+Il existe plusieurs genres de circuits intégrés:
 
 * Les processeurs (CPU)
 * Les microcontrôleurs (MCU)
@@ -129,7 +164,7 @@ Il existe plusieurs genre de circuits intégrés:
 
 .. textOnly::
     Nous nous concentrerons sur ceux qui sont programmables, mais nous utiliserons
-    divers circuits integrés par la suite.
+    divers circuits intégrés par la suite.
 
 .. slide::
 
@@ -139,7 +174,7 @@ Programmation de microcontrôleurs
 Mémoire
 ~~~~~~~
 
-Il existe plusieurs forme de mémore:
+Il existe plusieurs formes de mémoire:
 
 * La RAM
 * La flash (ROM)
@@ -173,11 +208,11 @@ en général accessibles via des **adresses**.
 Instructions binaires, assembleur
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Le coeur du processeur déchiffre les instructions et execute les actions en
+Le coeur du processeur déchiffre les instructions et exécute les actions en
 conséquence.
 
 .. discover::
-    Ces instructions sont appellées langage machine (opcodes).
+    Ces instructions sont appelées langage machine (opcodes).
 
 .. discover::
     Afin de pouvoir représenter ces opérations, on utilise des mnémoniques,
@@ -212,18 +247,18 @@ Pour cela, il suffit de disposer de la chaîne de compilation adéquate.
 
 **Binaires**
 
-Afin de programmer un micro-controleur, il faut produire un binaire "brut",
-et non pas un fichier ELF/binaire executable comme vous avez l'habitude.
+Afin de programmer un micro-contrôleur, il faut produire un binaire "brut",
+et non pas un fichier ELF/binaire exécutable comme vous avez l'habitude.
 
 A bord de la cible, il n'y a pas de système d'exploitation, ce qui veut dire
-pas d'ordonancement, pas d'espace utilisateur/noyau, pas d'appel système etc.
+pas d'ordonnancement, pas d'espace utilisateur/noyau, pas d'appel système etc.
 
 .. slide::
 
 **Optimisations**
 
 Il est nécessaire d'activer les **optimisations** du compilateur pour
-travailler sur des micro-controleurs. Typiquement ``-Os``:
+travailler sur des micro-contrôleurs. Typiquement ``-Os``:
 
 .. code-block:: bash
 
@@ -346,7 +381,7 @@ Un exemple: les broches d'ATmega
 .. slide::
 
 .. textOnly::
-    Sachant que, par exemple, un des boitiers à cette forme:
+    Sachant que, par exemple, un des boîtiers a cette forme:
 
 .. center::
     .. image:: img/dip.png

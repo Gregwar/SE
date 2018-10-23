@@ -25,4 +25,4 @@ Support et auteurs
 Projet
 ~~~~~~
 
-**:doc:`Les consignes du projets se trouvent ici <project>`**
+* **:doc:`Les consignes du projets se trouvent ici <project>`**
