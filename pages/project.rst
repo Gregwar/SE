@@ -44,8 +44,8 @@ la contrôler.
 Un numéro est gravé sur l'arrière de votre carte, il correspond à votre numéro de
 groupe. La puce Bluetooth a déjà été configurée avec les paramètres:
 
-    Nom: POV**N**
-    Pin: 000**N**
+    Nom: POV**N** 
+    Pin: 000**N** 
     Baud rate: 38400
 
 Où N est votre numéro de groupe
