@@ -1,4 +1,4 @@
-Projet: afficheur à persistence rétinienne
+Projet: afficheur à persistance rétinienne
 ==========================================
 
 Dans ce projet, une carte électronique sur mesure ainsi que la mécanique
