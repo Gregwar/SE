@@ -2,6 +2,9 @@
 TD3: Timer & Interruptions
 ==========================
 
+.. image:: /img/spark.png
+    :class: right
+
 Interruption externe
 --------------------
 
