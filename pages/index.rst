@@ -25,4 +25,6 @@ Support et auteurs
 Projet
 ~~~~~~
 
-* **:doc:`Les consignes du projets se trouvent ici <project>`**
+.. important::
+
+    **:doc:`Les consignes du projets se trouvent ici <project>`**

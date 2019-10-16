@@ -14,12 +14,12 @@ $slidey = new Slidey;
 $slidey
     ->setTitle('Système embarqué')
     ->copy('img')
-    ->copy('css')
+    // ->copy('css')
     ->mkdir('files')
-    ->copy(__DIR__.'/files/*.zip', 'files/')
-    ->copy(__DIR__.'/files/*.pdf', 'files/')
+    // ->copy(__DIR__.'/files/*.zip', 'files/')
+    ->copy(__DIR__.'/files/*', 'files/')
     ->addCss('css/style.css')
-    ->copy('favicon.ico')
+    // ->copy('favicon.ico')
     ;
 
 $password = @include('password.php');

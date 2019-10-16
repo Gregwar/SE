@@ -2,26 +2,38 @@
 TD3: Timer & Interruptions
 ==========================
 
-.. image:: /img/sinus.jpg
-    :class: right
+Interruption externe
+--------------------
 
-Le but de ce TD est de reprendre la base du TD2 (communication avec la
-puce MCP4822) et d'y ajouter l'utilisation de timer et d'interruption
-afin de produire en sortie un signal sonore.
+.. step::
 
-Obtenir les samples
--------------------
+    **Lisez la documentation de l'ADXL345 du TP précédent concernant les interruptions**
 
-Modifiez votre code pour produire des échantillons qui suivent une courbe
-sinusoïdale à une fréquence fixe choisie (par exemple 440hz).
+    * A quoi peuvent-elles servir?
+    * Comment les interfacer avec votre microcontrôleur?
 
-Vérifiez à l'aide par exemple d'un oscilloscope que vous produisez un
-tel signal.
+.. step::
 
-Mise en place d'un timer avec interruptions
--------------------------------------------
+    **Implémentation de l'interruption DATA_READY**
 
-Utilisez un timer pour provoquer l'envoi d'échantillons dans le DAC.
+    Câblez correctement le composant et faites en sorte que l'interruption *INT1*
+    se déclenche sur un *DATA_READY* et provoque la lecture d'un nouvel échantillon
+    par votre microcontrôleur.
 
-Vous provoquerez une interruption à une fréquence fixe (comme 44100hz, standard
-pour l'échantillonage musical) qui déclenchera l'envoi du prochain échantillon.
+Timer
+-----
+
+.. step::
+
+    Mettez en place un timer qui vous permettra de mesurer le temps écoulé entre deux
+    instants.
+
+.. step::
+
+    A l'aide du timer, mesurez le nombre d'échantillons reçus par seconde.
+
+.. step::
+
+    Vérifiez que ce nombre correspond à celui annoncé par l'ADXL345. Modifiez la fréquence
+    de sortie et vérifiez que la mesure change.
+

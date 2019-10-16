@@ -2,51 +2,53 @@
 TD2: Communiquons!
 ==================
 
-.. image:: /img/mcp.jpg
+.. image:: /img/adxl345-module.jpg
     :class: right
 
-Puce MCP4822
-------------
+Module ADXL345
+--------------
 
-Nous allons maintenant utiliser une puce nommée `MCP4822 </files/mcp4822.pdf>`_.
+Nous allons utiliser une puce nommée `ADXL345 </files/ADXL345.pdf>`_. Pour
+des raisons pratique, cette puce a été achetée déjà soudée sur une carte
+(*breakout*) dont le nom est GY-291:
 
-Il s'agit d'un convertisseur numérique/analogique, ou DAC. Elle permet, à partir
-d'informations numériques de produire un voltage voulu.
+.. center::
+
+    .. image:: /img/GY-291.jpg
+        :width: 700
+
 
 .. step::
 
-    **A partir de la spécification de la puce, quel bus semble t-elle utiliser?**
-    Votre processeur supporte t-il ce bus? Regardez la spécification pour voir comment
-    il fonctionne.
+    **Regardez la spécification de la puce**
+    Quel bus est utilisé par cette dernière? L'ATmega328P le supporte t-il?
 
 .. step::
 
     **Essayez de répondre aux questions suivantes:**
 
-    * A quoi sert la broche LDAC?
-    * Quelle est la résolution du DAC?
-    * Quelle est la conversion effectuée entre numérique et analogique? (selon quelle équation)
-    * Combien d'échantillons par seconde maximum pourrait-on envoyer à la carte?
+    * Quelle est l'adresse de la puce?
+    * Que mesure t-elle?
+    * Trouvez des exemples d'application
+    * Comment les mesures sont t-elles représentées?
 
 .. step::
 
-    **Choisissez les bonnes broches de votre carte pour effectuer un câblage qui permettra
-    de parler à la puce.**
-
-.. step::
-
-    **Vous pouvez alors tester la communication avec la puce**
-    Pour ce faire, utilisez simplement les broches pour envoyer "à la main" un signal
-    permettant de sortir un échantillon.
+    **Choisissez les bonnes broches pour brancher le module à votre carte.**
 
 .. step::
     **Implémentez le bus adéquat dans votre code**
-    Et envoyez une valeur dans votre DAC. Contrôlez que votre code marche avec, par exemple,
-    un multimètre.
-
+    A l'aide de la documentation du microcontrôleur ET du module, implémentez
+    la communication de manière à récupérer les valeurs du module.
+    
 Intégration
 -----------
 
 .. step::
-    Utilisez maintenant votre code série pour définir la valeur de l'échantillon que vous
-    allez transmettre à votre DAC.
+
+    Remontez les valeurs mesurées à travers la communication série UART
+
+.. step::
+
+    A partir des informations fournies par le capteur, calculez le *tangage* et le
+    *roulis*.
