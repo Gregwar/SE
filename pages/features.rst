@@ -136,24 +136,23 @@ Considérons le code suivant:
 
 .. slide::
 
-Par exemple, la réception d'un octet sur l'USART pourra déclencher l'appel à du
-code utilisateur, ce qui permet d'éviter de "scruter" pour vérifier si un octet a
-été reçu.
+Par exemple, lorsque l'envoi d'un octet se termine sur l'USART, on peut déclencher
+activer l'interruption correspondante:
 
 Cette version, dite en scrutation:
 
 .. code-block:: c
-    while (!(UCSR0A&_BV(RXC0)));
+    while (!(UCSR0A&_BV(TXC0)));
     // Reception de l'octet
 
 Sera plus flexible en utilisant l'interruption correspondante:
 
 .. code-block:: c
     // Active l'interruption à la réception
-    UCSR0B |= _BV(RXCIE0); 
+    UCSR0B |= _BV(TXCIE0); 
     ...
-    ISR(USART_RX_vect) {
-        // Reception de l'octet
+    ISR(USART_TX_vect) {
+        // Envoi de l'octet suivant
     }
 
 .. vi fix =|
