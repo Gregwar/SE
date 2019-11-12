@@ -161,7 +161,7 @@ Sera plus flexible en utilisant l'interruption correspondante:
 
 Les en-têtes du constructeur fournissent la macro suivante:
 
-.. slide::
+.. code-block:: c
 
     ISR(USART_TX_vect) {
         // Envoi de l'octet suivant
