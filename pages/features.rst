@@ -151,6 +151,18 @@ Sera plus flexible en utilisant l'interruption correspondante:
     // Active l'interruption à la réception
     UCSR0B |= _BV(TXCIE0); 
     ...
+    void __vector_20() __attribute__ ((signal,used));
+    void __vector_20()
+    {
+        // ...
+    }
+
+.. slide::
+
+Les en-têtes du constructeur fournissent la macro suivante:
+
+.. slide::
+
     ISR(USART_TX_vect) {
         // Envoi de l'octet suivant
     }
