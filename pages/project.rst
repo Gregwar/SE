@@ -50,6 +50,9 @@ groupe. La puce Bluetooth a déjà été configurée avec les paramètres:
 
 Où N est votre numéro de groupe
 
+La fréquence du CPU des de 13Mhz (``13000000``), et le processeur est déjà réglé
+pour utiliser l'horloge externe.
+
 #~) Pilotage des LEDs
 ---------------------
 
