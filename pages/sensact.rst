@@ -16,8 +16,8 @@ Consignes
 Capteurs à chosir
 ~~~~~~~~~~~~~~~~~
 
-* Accéleromètre
-* Gyroscope
+* Capteur de pression
+* Gyromètre
 * Magnétomètre
 * Jauges de contraintes
 * Codeurs incrémentaux (optique/magnétique)
