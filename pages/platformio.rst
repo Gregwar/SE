@@ -49,7 +49,7 @@ Avantages
     développement
     * Travailler sur des projets embarqués variant plusieurs plateformes dans le même
     environnement logiciel
-    * Partage des dépendances par le simple fichier `platformio.ini`
+    * Partage des dépendances par le simple fichier ``platformio.ini``
 
 .. slide::
 
