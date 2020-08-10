@@ -4,14 +4,14 @@ Capteurs
 Consignes
 ~~~~~~~~~
 
-* Expliquer comment ça marche (principes physiques)
+* Expliquer ce que le capteur mesure et comment (principes physiques)
 * Donner des exemples d'applications du capteur
 * On vous fournira une référence "low-cost", essayez d'identifier les
   spécifications, et de trouver des références plus chères, et expliquez
   ce qui justifie la différence de prix
 * Faites fonctionner le composant qu'on vous fournit avec votre kit Arduino,
-  (en utilisant de la programmation bare-metal), et expliquez lors de votre
-  passage comment il fonctionne (bus? registres? analogique/digital? voltage? ...)
+  et expliquez lors de votre passage comment il fonctionne (bus? registres?
+  analogique/digital? voltage? ...)
 
 .. note::
     Vous pouvez vous aider de PlatformIO
