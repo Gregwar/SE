@@ -33,6 +33,8 @@ Mise en place
 
     Pour flasher:
 
+    .. code-block:: bash
+
         pio run -t upload
 
     Utilisez l'API de Arduino pour faire clignoter une LED
