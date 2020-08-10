@@ -10,25 +10,37 @@ qui va avec vous seront fournis.
 .. important::
     `Télécharger le schéma de la carte </files/pov.pdf>`_
 
+#=) Contraintes
+~~~~~~~~~~~~~~~
+
+* Vous n'utiliserez pas de bibliothèque externe, on programmera ce projet en *bare metal*
+* Vous devrez créer une dépôt git et le partager avec vos enseignants
 
 #=) Prise en main du matériel
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+#~) Liste des composants
+-------------------------------------
+
+**XXX à Venir**
+
 #~) Programmation
 -------------------------------------
 
-.. warning::
-
-    Attention: le processeur n'est pas le même que celui utilisé lors des TDs, il
-    s'agit d'un *ATmega128*.
-
 La carte comporte un processeur sorti d'usine, il n'y a pas de bootloader
 logiciel dessus, uniquement les bootloaders hardware. Vous devrez pour le
-programmer utiliser un boîtier JTAG.
+programmer utiliser un boîtier AVRISP.
 
-Indications pour avrdude: ``-c jtagmkI -P /dev/ttyUSB0``
+Indications pour avrdude: ``-c avrisp -P /dev/ttyUSB0``
 
 Adaptez tout d'abord votre ``Makefile`` de manière à pouvoir programmer la carte.
+Vous pouvez essayer de faire clignoter la LED connectée à ``PD6``.
+
+.. note::
+
+    La batterie du POV charge automatiquement lorsqu'il est branché à un PC
+    (les 5V fournis par l'ISP le permettent). La LED rouge "Charge" reste allumée tant
+    que la batterie n'a pas fini de charger.
 
 #~) Communication série
 -----------------------
@@ -93,7 +105,8 @@ ordinateur.
 Vous avez maintenant tous les éléments pour pouvoir programmer votre horloge.
 Le but ici est d'afficher l'heure avec des "aiguille" en LEDs.
 
-.. image:: img/clock_1.jpg
+.. center::
+    .. image:: img/clock_1.jpg
 
 #~) Horloge numérique numérique arrondie
 ----------------------------------------
@@ -101,7 +114,8 @@ Le but ici est d'afficher l'heure avec des "aiguille" en LEDs.
 Affichez l'heure avec des nombres, sans compenser la distorsion de
 la rotation, comme ceci:
 
-.. image:: img/other_clock.jpg
+.. center::
+    .. image:: img/other_clock.jpg
 
 #~) Affichage horloge numérique générique
 -----------------------------------------
@@ -109,4 +123,5 @@ la rotation, comme ceci:
 Essayez ensuite de compenser la distorsion pour avoir une heure
 "droite", ayant ainsi un afficheur générique:
 
-.. image:: img/clock_2.jpg
+.. center::
+    .. image:: img/clock_2.jpg

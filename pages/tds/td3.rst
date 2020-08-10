@@ -1,5 +1,5 @@
 
-TD3: Timer & Interruptions
+TD3: Timer & interruptions
 ==========================
 
 .. image:: /img/spark.png

@@ -2,8 +2,23 @@
 TD2: Communiquons!
 ==================
 
+
 .. image:: /img/adxl345-module.jpg
     :class: right
+
+Port série
+----------
+
+.. step::
+
+    Votre board **Arduino Uno** est connectée à un émulateur USB/Série, qui permet
+    à votre ordinateur de communiquer avec elle.
+
+    Écrivez du code qui permettra d'écrire ou de lire des données depuis le port série.
+
+    Vous pourrez par exemple utiliser l'outil ``cu``, ou `PuTTy <https://www.putty.org/>`_
+    pour tester la communication depuis un terminal.
+
 
 Module ADXL345
 --------------

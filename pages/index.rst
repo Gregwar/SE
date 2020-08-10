@@ -20,7 +20,8 @@ Support et auteurs
     architecture
     bus
     features
-    sensact
+    platformio
+    sensors
 
 Projet
 ~~~~~~
