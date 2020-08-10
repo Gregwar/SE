@@ -99,11 +99,8 @@ Généralités
 
 .. slide::
 
-Les standards
--------------
-
 UART
-~~~~
+----
 
 Le port série est un des bus les plus célèbre et classique. Il s'agit d'une ligne
 asynchrone (sans horloge). Cela sous-entend qu'il existe un accord sur le débit,
@@ -159,7 +156,7 @@ produits.
 .. slide::
 
 I2C/TWI
-~~~~~~~
+-------
 
 I2C (Interface 2 Câbles), ou TWI (Two Wire Interface) est un type de bus qui
 utilise deux fils (en plus de la masse), qui est synchrone et half-duplex.
@@ -197,7 +194,7 @@ que HIGH est envoyé, la trame s'arrête).
 .. slide::
 
 SPI
-~~~
+---
 
 .. textOnly::
     Le SPI (Serial Peripheral Interface) est un bus full-duplex et synchrone. Sur
@@ -230,23 +227,23 @@ SPI
     SPI est également très répandu, car il permet d'atteindre des grandes vitesses (plusieurs
     dizaines de Mbit/s).
 
-.. slide::
+.. .. slide::
 
-CAN
-~~~
+.. CAN
+.. ---
 
-Le protocole CAN est un protocole série, basé sur un accord préalable de rapidité (baud rate).
-Il est très utilisé dans le monde industriel et automobile. Physiquement, il exploite deux lignes
-CANH et CANL, et se base sur un état dominant et récessif.
+.. Le protocole CAN est un protocole série, basé sur un accord préalable de rapidité (baud rate).
+.. Il est très utilisé dans le monde industriel et automobile. Physiquement, il exploite deux lignes
+.. CANH et CANL, et se base sur un état dominant et récessif.
 
-.. textOnly::
-    Il comporte un arbitrage, comme I2C, et les messages démarrent par un identifiant qui sert
-    justement à ajuster la priorité. Chaque trame comporte également un somme de contrôle CRC.
+.. .. textOnly::
+..     Il comporte un arbitrage, comme I2C, et les messages démarrent par un identifiant qui sert
+..     justement à ajuster la priorité. Chaque trame comporte également un somme de contrôle CRC.
 
-.. slide::
+.. .. slide::
 
-.. center::
-    .. image:: img/can.png
+.. .. center::
+..     .. image:: img/can.png
 
 .. slide::
 
