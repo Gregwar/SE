@@ -90,6 +90,14 @@ Le design d'un ADC est souvent proche du design dual DAC, en comparant le voltag
 
 .. slide::
 
+Dans l'Atmega328p, l'ADC est basé sur des comparaisons successives avec les valeurs d'un DAC utilisé
+en interne:
+
+.. center::
+    .. image:: img/atmega_dac.png
+
+.. slide::
+
 Interruptions
 -------------
 
@@ -232,7 +240,7 @@ DMA
 Les interruptions permettent d'alléger la plupart des opérations standards, telles
 que l'envoi/réception de données.
 
-Imaginez, sur un contrôleur à 16mhz une interruption qui:
+Imaginez, sur un contrôleur à 16Mhz une interruption qui:
 
 * Est levée à chaque octet reçu sur un bus à 1 méga bauds
 * Dure 64 cycles 
