@@ -34,7 +34,7 @@ Concepts
     .. image:: /img/platformio_concepts.png
 
 .. discoverList::
-    * **Plateforme**: une architecture (ARM, AVR, ESP32...) de processeur
+    * **Plateforms**: une architecture (ARM, AVR, ESP32...) de processeur
     * **Frameworks**: environnement logiciel (par exemple Arduino ou mbed)
     * **Boards**: cartes de développements connues et supportées
     * **Libraries**: bibliothèques permettant d'ajouter du support
