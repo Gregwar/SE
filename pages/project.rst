@@ -40,7 +40,7 @@ La carte comporte un processeur sorti d'usine, il n'y a pas de bootloader
 logiciel dessus, uniquement les bootloaders hardware. Vous devrez pour le
 programmer utiliser un boîtier AVRISP.
 
-Indications pour avrdude: ``-c usbasp -P /dev/ttyUSB0``
+Indications pour avrdude: ``-c usbasp``
 
 Adaptez tout d'abord votre ``Makefile`` de manière à pouvoir programmer la carte.
 Vous pouvez essayer de faire clignoter la LED connectée à ``PD6``.
