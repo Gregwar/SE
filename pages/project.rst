@@ -16,6 +16,9 @@ qui va avec vous seront fournis.
 * Vous n'utiliserez pas de bibliothèque externe, on programmera ce projet en *bare-metal*
 * Vous devrez créer une dépôt git **privé** et le partager avec vos enseignants
 
+.. image:: /img/pov.png
+    :class: right
+
 #=) Prise en main du matériel
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -24,14 +27,14 @@ qui va avec vous seront fournis.
 
 Voici les composants qui vous seront fournis:
 
-* `Une carte électronique POV </files/pov.pdf>`_
-* `Deux aimants, diamètre 12mm, épaisseur 5mm <https://fr.aliexpress.com/item/1005001404825174.html>`_
-* `Un moteur (ventilateur) 60x60x25mm, avec un axe vissable monté dans la boîte en plastique
-    <https://www.aliexpress.com/item/32882742546.html>`_
-* `Une alimentation 12V, connecteur DC 5.5mm <https://www.aliexpress.com/item/32980020011.html>`_
-* `Un boîtier de programmation USBASP 10 broches avec adaptateur vers 6 broches
-    <https://fr.aliexpress.com/item/32670511994.html>`_
-* `Une clé Allen 2.5mm <https://www.bricovis.fr/std/cles-males-allen-35.php>`_
+1. `Une carte électronique POV </files/pov.pdf>`_
+2. `Deux aimants, diamètre 12mm, épaisseur 5mm <https://fr.aliexpress.com/item/1005001404825174.html>`_
+3. `Un moteur (ventilateur) 60x60x25mm, avec un axe vissable monté dans la boîte en plastique
+  <https://www.aliexpress.com/item/32882742546.html>`_
+4. `Une alimentation 12V, connecteur DC 5.5mm <https://www.aliexpress.com/item/32980020011.html>`_
+5. `Un boîtier de programmation USBASP 10 broches avec adaptateur vers 6 broches
+  <https://fr.aliexpress.com/item/32670511994.html>`_
+6. `Une clé Allen 2.5mm <https://www.bricovis.fr/std/cles-males-allen-35.php>`_
 
 #~) Programmation
 -------------------------------------
