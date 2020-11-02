@@ -51,6 +51,11 @@ programmer utiliser un boîtier permettant d'utiliser le programmateur ISP.
 .. note::
     Indications pour avrdude, utilisez: ``-c usbasp``
 
+.. warning::
+    Le boîtier USBASP est accompagné d'un adaptateur pour se connecter à l'ISP 6 broches,
+    ce dernier n'est pas doté d'un détrompeur, c'est pour cela que ce dernier a été marqué d'un
+    trait blanc.
+
 Adaptez tout d'abord votre ``Makefile`` de manière à pouvoir programmer la carte.
 Vous pouvez essayer de faire clignoter la LED connectée à ``PD6``.
 
