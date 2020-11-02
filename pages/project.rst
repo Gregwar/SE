@@ -3,7 +3,7 @@ Projet: afficheur à persistance rétinienne
 
 Le but de ce projet est de programmer un afficheur à **persistance rétinienne**.
 Un bandeau de 16 LEDs montés sur une carte électronique elle-même montée sur un moteur
-est mis en rotation, en changeant la configuration des LEDs, il est ainsi possible de faire
+est mis en rotation, en changeant la configuration des LEDs, il est ainsi possible d'en faire
 un afficheur:
 
 .. center::
@@ -15,10 +15,10 @@ un afficheur:
 #=) Contraintes
 ~~~~~~~~~~~~~~~
 
-* Le projet se fera par groupes (à définir en classe)
+* Le projet se fera par groupes (à définir en classe),
 * Vous n'utiliserez pas de bibliothèque externe, on programmera ce projet en *bare-metal*,
-  comme dans les TDs
-* Vous devrez créer une dépôt git **privé** et le partager avec vos enseignants
+  comme dans les TDs,
+* Vous devrez créer une dépôt git **privé** et le partager avec vos enseignants.
 
 .. image:: /img/pov.png
     :class: right
@@ -44,7 +44,7 @@ Voici les composants qui vous seront fournis:
 -------------------------------------
 
 La carte comporte un processeur "sorti d'usine", il n'y a pas de *bootloader*
-logiciel dessus, uniquement les *bootloaders* hardware. Vous devrez pour le
+logiciel dessus. Vous devrez pour le
 programmer utiliser un boîtier permettant d'utiliser le programmateur ISP.
 (En l'occurrence, nous utiliserons le boîtier *low-cost* USBASP).
 
@@ -61,11 +61,11 @@ pour utiliser l'horloge externe.
 -------------
 
 La batterie du POV charge automatiquement lorsqu'il est branché à un PC (via les
-5V fournis en USB), et ce que le POV soit allumé ou non.
+5V fournis en USB), que l'interrupteur du POV soit allumé ou non.
 La LED rouge "Charge" reste allumée tant que la batterie n'a pas fini de charger.
 
 Pensez à vérifier que le POV est éteint quand vous le rangez, vous pouvez vérifier
-cela à l'aide de la LED *power* verte.
+cela à l'aide de la LED *power* (verte).
 
 #~) Communication série
 -----------------------
@@ -78,16 +78,20 @@ La mise en place de cette communication série avec la carte est vitale pour
 pouvoir dialoguer avec la carte pendant qu'elle tourne, et ainsi *débugger* ou pouvoir
 la contrôler.
 
-Un numéro est gravé sur l'arrière de votre carte, il correspond à votre numéro de
+Un numéro est étiqueté sur l'arrière de votre carte, il correspond à votre numéro de
 groupe. La puce Bluetooth a déjà été configurée avec les paramètres:
 
     Nom: POV**N** 
-    Pin: 000**N** 
+    Pin: 00**N** 
     Baud rate: 38400
 
-Où N est votre numéro de groupe
+Où N est votre numéro de groupe (par exemple ``POV17`` aura pour PIN ``0017``).
 
-#=) Fonctionnalités
+.. note::
+  Afin de communiquer en Bluetooth, vous pouvez utiliser votre PC, mais aussi votre téléphone
+  portable.
+
+#=) Prise en main
 ~~~~~~~~~~~~~~~~~~~
 
 .. step::
@@ -122,9 +126,12 @@ Où N est votre numéro de groupe
     Vous devrez être en mesure de définir l'heure courante en Bluetooth depuis votre
     ordinateur ou téléphone portable.
 
-    .. warning::
+#=) Modes de fonctionnement
+~~~~~~~~~~~~~~~~~~~
 
-        Note: gardez la possibilité de présenter tous les modes ci-dessous à la soutenance
+.. warning::
+
+    Note: gardez la possibilité de présenter tous les modes ci-dessous à la soutenance
 
 .. step::
 
