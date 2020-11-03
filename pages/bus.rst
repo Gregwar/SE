@@ -158,7 +158,7 @@ produits.
 I2C/TWI
 -------
 
-I2C (Interface 2 Câbles), ou TWI (Two Wire Interface) est un type de bus qui
+I2C (Inter-Integrated Circuit), ou TWI (Two Wire Interface) est un type de bus qui
 utilise deux fils (en plus de la masse), qui est synchrone et half-duplex.
 
 .. discover::
