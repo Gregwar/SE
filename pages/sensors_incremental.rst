@@ -4,7 +4,7 @@ Encodeur incrémental
 .. center::
     .. image:: /img/incremental.png
 
-* Une cellule de charge (10kg) et un HX711 en breakout
+* Un capteur incrémental
 * `Lien d'achat <https://www.aliexpress.com/item/32877808571.html>`_
 
 Fiche descriptive:
