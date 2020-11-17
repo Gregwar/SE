@@ -23,7 +23,7 @@ Port série
 Module ADXL345
 --------------
 
-Nous allons utiliser une puce nommée `ADXL345 </files/ADXL345.pdf>`_. Pour
+Nous allons utiliser une puce nommée `ADXL345 </files/adxl345.pdf>`_. Pour
 des raisons pratique, cette puce a été achetée déjà soudée sur une carte
 (*breakout*) dont le nom est GY-291:
 
