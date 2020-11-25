@@ -177,7 +177,7 @@ Où N est votre numéro de groupe (par exemple ``POV17`` aura pour PIN ``0017``)
     ---------
 
     - Granularité et précision spatiale. Avec quelle précision êtes vous capables de créer un point de lumière à une coordonnée donnée ? Quelle est la taille minimale de ce point ?
-    - Granularité et précision temporelle. Fréquence de rafraîchissement des LEDs ? Avec quelle granularité êtes vous capables de mesurer le temps de rotation du POV ?²
+    - Granularité et précision temporelle. Fréquence de rafraîchissement des LEDs ? Avec quelle granularité êtes vous capables de mesurer le temps de rotation du POV ?
     - Quelle est la vitesse de rotation du POV ? Quantifiez sa stabilité.
     - Précision de l'heure. Si l'heure que vous insérez aujourd'hui est parfaite, quantifiez l'erreur attendue sur l'heure au bout de 6 mois d'utilisation.
     - Ordres de grandeurs des actions. Combien coûte (en temps et en coups d'horloge) une interruption ? Une multiplication et une division flottante ? Une multiplication et une division entière ?
