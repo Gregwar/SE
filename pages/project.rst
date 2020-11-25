@@ -182,3 +182,19 @@ Où N est votre numéro de groupe (par exemple ``POV17`` aura pour PIN ``0017``)
     - Précision de l'heure. Si l'heure que vous insérez aujourd'hui est parfaite, quantifiez l'erreur attendue sur l'heure au bout de 6 mois d'utilisation.
     - Ordres de grandeurs des actions. Combien coûte (en temps et en coups d'horloge) une interruption ? Une multiplication et une division flottante ? Une multiplication et une division entière ?
     - Combien de mémoire utilisez vous ? Combien il en reste ? Quels sont les différents types de mémoire disponibles et à quoi servent-ils ?
+
+#=) Firmware de démo / test
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Si vous avez un doute sur votre POV, vous pouvez programmer le firmware de test suivant:
+
+* Télécharger `pov-demo.bin <files/pov-demo.bin>`_
+
+Avec ce firmware:
+
+* La LED bleue (``PD6``) clignote au démarrage
+* Les LEDs blanches s'allument à tour de rôle
+* Si vous placez l'aimant devant le capteur à effet hall, la couleur des LEDs blanches s'inversent
+* Si vous vous connectez en Bluetooth et envoyez un message, la carte répondre ``POV echo: message`` (ou
+  ``message`` sera ce que vous avez envoyé)
+  
