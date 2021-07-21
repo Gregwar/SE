@@ -95,6 +95,16 @@ Où N est votre numéro de groupe (par exemple ``POV17`` aura pour PIN ``0017``)
 .. note::
   Afin de communiquer en Bluetooth, vous pouvez utiliser votre PC, mais aussi votre téléphone
   portable.
+  
+
+#~) Charset
+~~~~~~~~~~~
+
+À un moment donné, il sera nécessaire de dessiner des caractères sur le POV. Pour ce faire, nous vous
+recommandons de générer du code C pour embarquer les images dans la mémoire de la carte.
+
+Par exemple, vous pourriez utiliser Python et OpenCV afin d'ouvrir des fichiers PNG, d'accéder aux
+pixels de ces derniers et de générer du code.
 
 #=) Prise en main
 ~~~~~~~~~~~~~~~~~~~
