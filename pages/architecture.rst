@@ -433,6 +433,29 @@ Et l'épilogue::
         00000088 <__stop_program>:
           88:   ff cf           rjmp    .-2             ; 0x88 <__stop_program>
 
+
+.. slide::
+
+Les GPIOs
+---------
+
+.. textOnly::
+    Les GPIOs (*General Purpose Input/Outputs*) sont des broches que l'on peut piloter
+    en lecture/écriture à notre guise.
+
+    Cet exemple montre le schéma logique d'une broche d'ATmega, il est ici possible
+    d'activer la broche en sortie et de la piloter au niveau haut ou bas (milieu du schéma),
+    de l'échantilloner (bas du schéma) et d'y activer une pull-up (haut du schéma).
+
+.. center::
+    .. image:: img/atmega-pin.png
+
+
+.. slide::
+
+Les broches sont en général utilisables en GPIO et peuvent passer en mode alternatif,
+étant alors gérée par une fonctionnalité du contrôleur (pensez par exemple à l'UART).
+
 .. redirection-title:: tds/td1
 
 TD

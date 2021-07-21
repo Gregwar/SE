@@ -19,7 +19,8 @@ Support et auteurs
 
     architecture
     bus
-    features
+    interrupts
+    timers_adc
     platformio
     sensors
 

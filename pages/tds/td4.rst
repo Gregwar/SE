@@ -1,62 +1,42 @@
 
-TD4: PlatformIO (ADC et Servo)
+TD4: Plus loin avec l'ADXL345
 ==========================
 
-.. image:: /img/platformio.png
+.. image:: /img/spark.png
     :class: right
 
-Mise en place
--------------
-
-.. step::
-
-    Après avoir installé au moins PlatformIO core, créez un dossier, et dans ce dernier lancez:
-
-    .. code-block:: bash
-
-        pio project init --board uno
-
-    Observez le contenu de ``platformio.ini``:
-
-    .. code-block:: ini
-
-        [env:uno]
-        platform = atmelavr
-        board = uno
-        framework = arduino
-
-    Pour compiler:
-
-    .. code-block:: bash
-
-        pio run
-
-    Pour flasher:
-
-    .. code-block:: bash
-
-        pio run -t upload
-
-    Utilisez l'API de Arduino pour faire clignoter une LED
-
-Échantillonnage ADC et servomoteur
-----------------------------------
-
-.. step::
-
-    Utilisez l'API d'Arduino pour prendre des échantillons (ADC) d'une photorésistance de votre kit
-    et contrôleur le servomoteur de modélisme:
-
-    .. center::
-        .. image:: /img/photoresistor.webp
-
-        .. image:: /img/sg90.jpg
-            :width: 300
-
-Retour sur l'ADXL345
+Interruption externe
 --------------------
 
 .. step::
 
-    Sur le site de `PlatformIO <https://platformio.org/>`_, trouvez la bibliothèque qui permet de
-    contrôler l'ADXL345 utilisé précédemment et utilisez là pour échantillonner.
+    **Lisez la documentation de l'ADXL345 du TP précédent concernant les interruptions**
+
+    * A quoi peuvent-elles servir?
+    * Comment les interfacer avec votre microcontrôleur?
+
+.. step::
+
+    **Implémentation de l'interruption DATA_READY**
+
+    Câblez correctement le composant et faites en sorte que l'interruption *INT1*
+    se déclenche sur un *DATA_READY* et provoque la lecture d'un nouvel échantillon
+    par votre microcontrôleur.
+
+Timer
+-----
+
+.. step::
+
+    Mettez en place un timer qui vous permettra de mesurer le temps écoulé entre deux
+    instants.
+
+.. step::
+
+    A l'aide du timer, mesurez le nombre d'échantillons reçus par seconde.
+
+.. step::
+
+    Vérifiez que ce nombre correspond à celui annoncé par l'ADXL345. Modifiez la fréquence
+    de sortie et vérifiez que la mesure change.
+

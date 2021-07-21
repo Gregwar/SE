@@ -1,42 +1,41 @@
 
-TD3: Timer & interruptions
+TD3: Interruptions et buffers circulaires
 ==========================
 
 .. image:: /img/spark.png
     :class: right
 
-Interruption externe
---------------------
+Interruptions USART
+-------------------
 
 .. step::
 
-    **Lisez la documentation de l'ADXL345 du TP précédent concernant les interruptions**
+    Mettez en place une interruption se déclenchant lorsqu'un octet est reçu ou lorsque
+    le buffer d'envoi est disponible
 
-    * A quoi peuvent-elles servir?
-    * Comment les interfacer avec votre microcontrôleur?
 
-.. step::
+.. note::
+    L'interruption indiquant que le microcontrôleur est prêt à transmettre risque de se
+    déclencher en boucle, il faudra donc l'activer uniquement au moment où vous souhaiterez
+    transmettre quelque chose, et la stopper lorsque le transfert sera terminé.
 
-    **Implémentation de l'interruption DATA_READY**
 
-    Câblez correctement le composant et faites en sorte que l'interruption *INT1*
-    se déclenche sur un *DATA_READY* et provoque la lecture d'un nouvel échantillon
-    par votre microcontrôleur.
-
-Timer
------
+Buffer circulaire
+------------------
 
 .. step::
 
-    Mettez en place un timer qui vous permettra de mesurer le temps écoulé entre deux
-    instants.
+    Mettez en place un buffer circulaire permettant de stocker les données à envoyer
+    ainsi que les données reçues.
 
-.. step::
+    Vous pourrez alors disposer par exemple des fonctions ci-dessous:
 
-    A l'aide du timer, mesurez le nombre d'échantillons reçus par seconde.
+.. code-block:: c
 
-.. step::
-
-    Vérifiez que ce nombre correspond à celui annoncé par l'ADXL345. Modifiez la fréquence
-    de sortie et vérifiez que la mesure change.
-
+    // Sends data (store them in the ring buffer)
+    void usart_send_byte(uint8_t byte);
+    void usart_send_string(uint8_t *str);
+    // Returns the number of available bytes in receive ring buffer
+    size_t usart_available();
+    // Reads one byte from the ring buffer
+    uint8_t usart_read();
