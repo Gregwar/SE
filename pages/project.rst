@@ -205,6 +205,6 @@ Avec ce firmware:
 * La LED bleue (``PD6``) clignote au démarrage
 * Les LEDs blanches s'allument à tour de rôle
 * Si vous placez l'aimant devant le capteur à effet hall, la couleur des LEDs blanches s'inversent
-* Si vous vous connectez en Bluetooth et envoyez un message, la carte répondra ``POV echo: message`` (ou
-  ``message`` sera ce que vous avez envoyé)
+.. * Si vous vous connectez en Bluetooth et envoyez un message, la carte répondra ``POV echo: message`` (ou
+..   ``message`` sera ce que vous avez envoyé)
   
