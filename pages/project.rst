@@ -62,6 +62,12 @@ Vous pouvez essayer de faire clignoter la LED connectée à ``PD6``.
 La fréquence du CPU est de 13Mhz (``13000000``), et le processeur est déjà réglé
 pour utiliser l'horloge externe.
 
+Sous Windows, il est possible que le boîtier ne soit pas reconnu, vous pouvez utiliser le logiciel
+Zadig pour installer le pilote, avec ces paramètre:
+
+.. center::
+    .. image:: /img/zadig.png
+
 #~) Batteries
 -------------
 
