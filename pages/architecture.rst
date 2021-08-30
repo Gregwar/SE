@@ -12,22 +12,21 @@ Introduction
     .. image:: img/woz.jpg
 
 .. textOnly::
-    Les premiers ordinateurs ont suivi l'arrivée des microprocesseurs au début
-    des années 1970. Les capacités de ces derniers étaient loin de la puissance
-    des ordinateurs modernes, mais il était possible de savoir TOUT ce que
-    contenait votre machine et comment elle fonctionnait.
+    First personal computers followed microcontrollers in the begining of 70s.
+    Their capacities were far behind modern computers, but it was possible
+    to know EVERYTHING that was included in your maching and how it worked.
 
 .. slide::
 
-Loi de Moore
+Moore's law
 ~~~~~~~~~~~~
 
 .. center::
     .. image:: img/moore.png
 
 .. textOnly::
-    La loi empirique de Moore établit que la densité de transistors dans un ordinateur
-    double environ tous les deux ans à budget égal.
+    Empirical Moore's law establishes that transistors density in computers doubles
+    about every two years for the same budget.
 
 .. slide::
 
@@ -35,16 +34,16 @@ Loi de Moore
     .. image:: img/cloud.jpg
 
 .. textOnly::
-    L'évolution technologique qui nous a conduit a la situation actuelle
-    a empilé des couches d'abstractions qui nous permettent de profiter
-    d'un environnement riche et facile d'accès.
+    Technological progress leaded to current situation where abstraction
+    blocks were stacked, allowing us to enjoy a rich and easy to use
+    environment.
 
-    Cependant, un informaticien moderne est peu averti du fonctionnement
-    du matériel au plus bas niveau.
+    However, modern computer scientists are less aware of hardware and low-level
+    considerations.
 
 .. slide::
 
-Loi de Wirth
+Wirth's law
 ~~~~~~~~~~~~
 
 .. important::
@@ -58,21 +57,21 @@ Loi de May
 
 .. slide::
 
-Désenchantement logiciel
+Software disenchantment
 -------------------------
 
-`Article original <https://medium.com/@rfallet/desenchantement-logiciel-ffba8eef7b8a>`_
+`Full blog post <https://tonsky.me/blog/disenchantment/>`_
 
 .. discoverList::
 
-    * Le logiciel est **lent**
-        * Windows 10 met **30 minutes** à se mettre à jour ...
-        * ... dans le même temps, on aurait réécrit **5 fois le SSD entier**
-        * Pourquoi un téléphone met **30 à 60 secondes à démarrer** ?
-    * Le logiciel est **énorme**
-        * Windows 95 pesait **30 Mo** ...
-        * ... l'application clavier de Google (Android) consomme **150 Mo**
-    * Le logiciel est **vite obsolète**
+    * Software is **slow**
+        * Windows 10 can take **30 minutes** for an update...
+        * ... in the same time budget, we can rewrite **5 times the full SSD**
+        * Why a smartphone takes **30 to 60 seconds to even boot** ?
+    * Software is **huge**
+        * Windows 95 size was **30 Mo** ...
+        * ... the android Google keyboard now used **150 Mo** of RAM
+    * Software is **quickly obsolete**
 
 .. slide::
 
@@ -93,39 +92,37 @@ Désenchantement logiciel
 
 .. slide::
 
-Qu'est-ce qu'un système embarqué?
+What is an embedded system?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: img/finger.jpg
     :class: right
 
-Dans le cadre de ce cours, un système embarqué sera:
+In this lecture, embedded system will be:
 
 .. discoverList::
-* Composé d'au moins une puce programmable
-* Petit, ce qui implique des difficultés
-  * D'encombrement
-  * De puissance
-  * De performance
-  * De temps réel
+* A system containing at least something we can program
+* Having some constraints:
+  * Size
+  * Power
+  * Performance
+  * Real-time
 
 .. slide::
 
-Du silicium au programme
+Silicium to program
 ------------------------
 
 .. textOnly::
-    Les circuits intégrés (puces électroniques) sont la base de toute
-    architecture matérielle embarquée. Ils sont construits à partir de
-    galettes nommées **wafers**.
+    Integrated circuits is the base technology of all embedded system.
+    They are engraved on silicium disks called **wafers**:
 
 .. center::
     .. image:: img/insolation.png
 
 .. textOnly::
-    Ces galettes sont principalement traitées par photolithographie à l'aide
-    de masques optiques afin de reproduire des motifs qui formeront les
-    composants (transistor, diode, résistance ...)
+    Those disks are engraved using photolitography process using optical
+    masks to duplicate a pattern forming components (transistors, diodes, resistors...)
 
 .. slide::
 
@@ -133,8 +130,8 @@ Du silicium au programme
     .. image:: img/wafer.jpg
 
 .. textOnly::
-    Ces morceaux de silicium sont alors packagés dans des boîtiers qui pourront
-    être assemblés sur des cartes électroniques.
+    Those silicium dices are then encased in packages that can be assembled in
+    electronics boards
 
 .. slide::
 
@@ -151,43 +148,42 @@ Du silicium au programme
 .. image:: img/ics.jpg
     :class: right
 
-Les CIs
+ICs
 ~~~~~~~
 
-Il existe plusieurs genres de circuits intégrés:
+There are several types of integrated circuits:
 
-* Les processeurs (CPU)
-* Les microcontrôleurs (MCU)
-* Les ASIC/ASSP
-* Les DSP
-* Les FPGA
+* Computer processing unit (CPU)
+* Microcontrollers (MCU)
+* DSP
+* FPGA
+* ASIC/ASSP
 
 .. textOnly::
-    Nous nous concentrerons sur ceux qui sont programmables, mais nous utiliserons
-    divers circuits intégrés par la suite.
+    For our work, we will focus on ICs we can program, but we will communicate with
+    other ICs.
 
 .. slide::
 
-Programmation de microcontrôleurs
+Programming a microcontroller
 ---------------------------------
 
-Mémoire
+Memory
 ~~~~~~~
 
-Il existe plusieurs formes de mémoire:
+There are different types of memory:
 
-* La RAM
-* La flash (ROM)
-* L'EEEPROM
+* RAM
+* Flash (ROM)
+* EEEPROM
 
 .. slide::
 
-Registres
+Registers
 ~~~~~~~~~
 
-Un processeur contient également des **registres**, qui sont
-des "cases" particulières de la mémoire ayant un effet sur le comportement
-du processeur ou du hardware.
+In the memory, some address are used as **registers**, that can be used
+to change the processor and hardware behaviour.
 
 .. center::
 
@@ -195,8 +191,7 @@ du processeur ou du hardware.
 
 .. slide::
 
-Les éléments (registres, mémoire vive, morte...) présents sur le bus ou non sont
-en général accessibles via des **adresses**.
+Those registers are available just like any other memory **address**.
 
 .. slide::
 
@@ -205,75 +200,75 @@ en général accessibles via des **adresses**.
 
 .. slide::
 
-Instructions binaires, assembleur
+Binary instruction, assembly
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Le coeur du processeur déchiffre les instructions et exécute les actions en
-conséquence.
+Processor core read sequentially instructions and executes actions.
 
 .. discover::
-    Ces instructions sont appelées langage machine (opcodes).
+    Those instructions are the machine language.
 
 .. discover::
-    Afin de pouvoir représenter ces opérations, on utilise des mnémoniques,
-    qui représentent le langage assembleur.
+    To represent those operations visually, we use the so-called mnemonics:
+    this is the assembly language.
 
 .. slide::
 
-Chargement du programme
-~~~~~~~~~~~~~~~~~~~~~~~
+Loading a program
+~~~~~~~~~~~~~~~~~
 
-Les micro-contrôleurs proposent en général plusieurs manières d'être programmés en
-sortie d'usine (JTAG, SPI, série...)
+Microcontrollers are generally featuring several ways to program them
+(JTAG, SPI, usart, USB...); thus are **bootloaders**.
 
 .. discover::
-    Les cartes de développement sont fréquemment équipées d'un programme permettant
-    lui-même de les reprogrammer. C'est ce que l'on appelle un **bootloader**.
+    Developing boards are usually provided with programs allowing to reprogram them
+    using more convenient ways (like ethernet, over-the-air...),
+    we call them **software bootloaders**.
 
 .. slide::
 
-Compilation depuis C
+C compiling
 ~~~~~~~~~~~~~~~~~~~~
 
 **Cross-compilation**
 
-Lorsque nous travaillerons sur des petits binaires, nous allons utiliser
-la **cross-compilation**, c'est à dire que nous compilerons pour une
-autre architecture que notre ordinateur.
+We can build binaries for another architecture than the computer we are
+currently working on, this process is known as **cross-compilation**.
 
-Pour cela, il suffit de disposer de la chaîne de compilation adéquate.
+For this, we need the proper **compilation toolchain**. (For example,
+the compiler itself is running on an ``x86_64`` computer and producing
+``avr`` bytecodes).
 
 .. slide::
 
-**Binaires**
+**Binaries**
 
-Afin de programmer un micro-contrôleur, il faut produire un binaire "brut",
-et non pas un fichier ELF/binaire exécutable comme vous avez l'habitude.
+To program a microcontroller, we need to output a raw binary, and not
+an ELF-like file, the one we run using Linux for example.
 
-A bord de la cible, il n'y a pas de système d'exploitation, ce qui veut dire
-pas d'ordonnancement, pas d'espace utilisateur/noyau, pas d'appel système etc.
+On the target, there are no operating system (unless we bring one), which means
+no scheduling, no kernel/user space, no system call etc.
 
 .. slide::
 
 **Optimisations**
 
-Il est nécessaire d'activer les **optimisations** du compilateur pour
-travailler sur des micro-contrôleurs. Typiquement ``-Os``:
+It is really necessary to enable compilers **optimisations** to work on
+microcontrollers. Typically ``-Os``:
 
 .. code-block:: bash
 
     gcc -Os code.c
 
 .. textOnly::
-    Cette option demande au compilateur de réduire au plus possible la
-    taille du fichier produit.
+    This option asks the compiler to produce the smallest possible output
 
 .. slide::
 
-**Registres**
+**Registers**
 
 .. textOnly::
-    On retrouvera en général ce genre de notations:
+    You can meet this notation:
 
 .. code-block:: cpp
     #define REG (*(volatile uint8_t *)(0xf00))
@@ -283,30 +278,28 @@ travailler sur des micro-contrôleurs. Typiquement ``-Os``:
     }
 
 .. textOnly::
-    Afin d'accéder à un registre. Le mot clé ``volatile`` permet au compilateur
-    de savoir qu'il faut écrire dans cette variable (notamment d'éviter les optimisations
-    qui pourraient y correspondre).
+    To access a register. The ``volatile`` keyword tell the compiler that
+    this memory address should be written (especially, it should not be optimized out).
 
 .. slide::
 
-**Opérations binaires**
+**Binary operations**
 
 .. textOnly::
-    Il existe plusieurs opérateurs importants à connaître pour manipuler les octets
-    au bit près:
+    You should become familiar to bitwise operators:
 
 =============   ======================
-**Opérateur**   **Signification**
+**Operator**    **Meaning**
 =============   ======================
-``&``           Et logique
+``&``           Logical "and"
 =============   ======================
-``|``           Ou logique
+``|``           Logical "or"
 =============   ======================
-``~``           Négation (inverse)
+``~``           Negation (invert)
 =============   ======================
-``<<``          Décalage à gauche
+``<<``          Left shift
 =============   ======================
-``>>``          Décalage à droite
+``>>``          Right shift
 =============   ======================
 
 .. slide::

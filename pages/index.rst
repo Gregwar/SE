@@ -1,9 +1,9 @@
-Sommaire
+Outline
 ========
 
 .. slide::
 
-Support et auteurs
+Contacts
 ~~~~~~~~~~~~~~~~~~
 
 .. important::
@@ -24,9 +24,9 @@ Support et auteurs
     platformio
     sensors
 
-Projet
+Project
 ~~~~~~
 
 .. important::
 
-    **:doc:`Les consignes du projets se trouvent ici <project>`**
+    **:doc:`Project instructions <project>`**
