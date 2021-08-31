@@ -96,28 +96,26 @@ Generalities
 UART
 ----
 
-Le port série est un des bus les plus célèbre et classique. Il s'agit d'une ligne
-asynchrone (sans horloge). Cela sous-entend qu'il existe un accord sur le débit,
-que l'on appelle en général *baud rate*.
+UART, also sometime simply called "Serial", is one of the most famous buses.
+It is an asynchronous bus (without clock). This implies an agreement on the
+communication frequency, called *baud rate*.
 
 .. discover::
-    Les octets sont transmis bit après bit.
+    Bytes are transmitted bit per bit (serial).
 
 .. discover::
-    Les octets sont fréquemment précédés d'un *start bit*, et suivi d'un *stop
-    bit* qui permet de garder la ligne synchronisée même si on ne transmet que
-    le même niveau logique.
+    Bytes starts with a *start bit* and are followed by a *stop bit* allowing
+    to keep synchronisation among lines.
 
 .. slide::
 
 **TTL**
 
-La variante standard est d'utiliser deux fils (en plus de la masse), TX et RX.
-Chaque contrôleur pilote sa broche TX et écoute RX. Le signal peut être de divers
-niveaux de voltage, typiquement 5V ou 3.3V.
+Typically, UART uses two wires TX and RX. Each controller drives its TX pin and listens
+on its RX.
 
 .. discover::
-    Dans sa forme la plus standard, le bus série est full-duplex.
+    In the most standard form, UART bus is full-duplex.
 
 .. slide::
 
@@ -126,38 +124,35 @@ niveaux de voltage, typiquement 5V ou 3.3V.
 
 **RS-232**
 
-Le RS-232 est une norme série standard utilisant des niveaux de voltage de -12V
-et de 12V. Cette variante est half-duplex.
+RS-232 is another UART standard using more robust voltage levels, typically -12V
+and 12V.
 
-Le connecteur historique (photo ci-contre) se retrouve encore dans certains
-produits.
+It is likely you already saw the historical connector on some old machines.
 
 .. discover::
 
     **RS-485**
 
-    Le RS-485 est une autre norme half-duplex de la liaison série utilisant
-    2 fils symétriques, la différence entre ces derniers devant être de -200mV
-    ou de +200mV.
+    RS-485 is another standard that is half-duplex and use 2 symetrical wires,
+    the difference should be -200mV or +200mV to specify a 0 or a 1.
 
 .. slide::
 
 .. important::
-    Il existe des baud rate typiques, les plus célèbres sont 9600, 57600,
-    ou encore 115200
-    L'UART se limite en général à quelques Mbit/s
+    There are historical typical baud rates, most famouses are 9600, 57600
+    or 115200.
+    UART can reach only some Mbit/s
 
 .. slide::
 
 I2C/TWI
 -------
 
-I2C (Inter-Integrated Circuit), ou TWI (Two Wire Interface) est un type de bus qui
-utilise deux fils (en plus de la masse), qui est synchrone et half-duplex.
+I2C (Inter-Integrated Circuit), or TWI (Two Wire Interface) is a bus type that uses two wires,
+it is synchronous and half-duplex.
 
 .. discover::
-    Les fils sont tirés vers V+ à travers des pull-up, et pilotés par des
-    collecteurs/drains ouverts.
+    Those lines are pulled to high voltage level with pull-ups and driven by open drains
 
 .. slide::
 
@@ -167,23 +162,23 @@ utilise deux fils (en plus de la masse), qui est synchrone et half-duplex.
 .. slide::
 
 .. textOnly::
-    I2C se base sur un système d'adressage, et un protocole contenant des acquittements.
+    I2C is based on a protocol with address, arbitration and acknowledgements.
 
 .. center::
     .. image:: img/i2c_protocol.jpg
 
 .. slide::
 
-Dans le cas ou plusieurs maîtres entameraient une trame exactement en même temps,
-un arbitrage est réalisé en monitorant le niveau de la ligne (si LOW est lu alors
-que HIGH est envoyé, la trame s'arrête).
+If multiple masters start a frame simultaneously, the arbitration is implemented by monitoring
+the line level (if LOW is read when the open drain is open, frame is stopped because of a collision).
+
+Thus, addresses with the more ``0``s in the high part have more priority in the arbitration.
 
 .. slide::
 
 .. important::
-    Ce protocole est très répandu et utilisé, il est cependant en général limité à
-    400kbit/s.
-    Il existe cependant des variantes "fast" de l'I2C.
+    This protocol is very widespread, but is limited to 400kbit/s.
+    There is however "fast" variants of I2C.
 
 .. slide::
 
@@ -191,7 +186,9 @@ SPI
 ---
 
 .. textOnly::
-    Le SPI (Serial Peripheral Interface) est un bus full-duplex et synchrone. Sur
+    SPI (Serial Peripheral Interface) is a full-duplex and synchronous bus.
+    Some devices are 
+    SPI (Serial Peripheral Interface) est un bus full-duplex et synchrone. Sur
     un bus SPI est présent un maître et des esclaves.
 
     Il est en général composé de 4 fils:
