@@ -1,4 +1,4 @@
-Outline
+Embedded systems
 ========
 
 .. slide::
