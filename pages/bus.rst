@@ -1,101 +1,95 @@
 .. slide:: middleSlide
 
-Les bus
-=======
+Communication buses
+=====
 
 .. slide::
 
-Présentation
+Presentation
 ------------
 
-Le besoin d'avoir des protocoles communs pour faire dialoguer les CIs/composants
-a donné naissance à certains bus standards.
+Standard communication buses emerged from the need of getting MCU and IC
+communicating together. We will here present some of them.
 
 .. slide::
 
 
-Les lignes
-~~~~~~~~~~
+Lines
+~~~~~
 
-Avant de parler des bus, parlons du fonctionnement des différentes lignes électroniques.
-Contrairement à la vision "informaticien", une ligne n'est pas simplement à "0" ou à "1",
-elle est d'une part à un certain **niveau de voltage**, mais aussi à une certaine **impédance**.
+Before discussing about buses, let's discuss how physical electronic lines work.
+Contrary to the "computer scientist" vision, an electronic line is not only "0" or "1",
+it is at a given **voltage level**, but also a certain **impedance**.
 
 .. slide::
 
-Lorsqu'une ligne est pilotée par un contrôleur, elle est amenée en basse impédance à
-un niveau logique ou à un autre. En général, peu de courant peuvent circuler à travers.
+A line can be driven at low impedance using push/pull transistors:
 
 .. center::
-    .. image:: img/drive.jpg
+    .. image:: img/push-pull.png
 
 .. slide::
 
-Un troisième état est la haute impédance, c'est à dire une connexion flottante. C'est
-elle qui correspond par exemple au mode "entrée" de votre ATmega328p.
+Symbolically, this can be represented with a triangle, and called line driver or buffer.
 
 .. center::
     .. image:: img/tristate.png
 
-.. textOnly::
-    Certaines lignes sont cependant pilotées seulement par moment, et "relâchées" à d'autres,
-    elles sont alors flottantes. On utilise en général une **résistance de tirage**, qui
-    leur impose un niveau logique, on dit qu'elles sont en haute impédance.
+Here, the input "B" is equivalent to ``pinMode`` in Arduino, or writing to ``DDRx``
+register on the **ATmega328P**, it allows us to either drive the line or let it "floating".
 
 .. slide::
+
+Another possible configuration is "open-drain", that is like push-pull but without the upper
+transistor, allowing to pull the line to the ground, but letting it floating else:
+
+.. center::
+    .. image:: img/push-pull-od.png
+
+.. slide::
+
+When a line is input high impedance and nothing is plugged (the line is floating), any voltage can be
+read due to any kind of interference. If one wants to impose a "default" logic level, it should use
+the so-called pull-up/down resistors:
 
 .. center::
     .. image:: img/pull.jpg
 
 .. slide::
 
-.. textOnly::
-    Une autre configuration que l'on trouve est le collecteur ouvert (ou drain ouvert), qui
-    signifie qu'un transistor prêt à être fermé est attaché à cette broche.
+In the case of **ATmega328P**, each input/output can actually be set in 4 different
+modes:
 
-.. center::
-    .. image:: img/opencollector.png
+* **Low impedance (output)**
+    * Output high level (ex: 5V)
+    * Output low level (0V)
+* **High impedance (input)**
+    * Input floating
+    * Input with pull-up
 
-.. slide::
+.. discover::
+    .. note::
+        Open drain mode can be implemented by writing ``0`` in ``PORTx`` and using ``DDRx`` to
+        either set the pin as output or input.
 
-Push/Pull vs Open collector
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. textOnly::
-    On retrouve en général ces deux configurations: le push-pull (qui "drive" la ligne) ou
-    l'open-drain
-
-.. center::
-    .. image:: img/pushpull.jpg
-    .. image:: img/open-collector.jpg
-
-.. slide::
-
-Unités
-~~~~~~
-
-* Ko ?
-* Kio ?
-* Kb ?
-* KB ?
-* Kib ?
-* KiB ?
+.. discover::
+    .. note::
+        More complex microcontrollers typically also offer pull-down resistor input possibility
 
 .. slide::
 
-Généralités
+Generalities
 ~~~~~~~~~~~
 
 .. discoverList::
-    * Niveau de voltage?
-    * Analogique/Digital?
-    * Synchrone ou asynchrone?
-    * Full duplex ou *half duplex*?
-    * Bande(s) passante(s)?
-    * Robustesse?
-    * Protocole?
-    * Efficacité?
-
+    * Voltage level?
+    * Analog / Digital?
+    * Synchronous / Asynchronous ?
+    * Full duplex / Half duplex ?
+    * Bandwidth ?
+    * Robustness ?
+    * Protocol ?
+    * Efficiency ?
 
 .. slide::
 
