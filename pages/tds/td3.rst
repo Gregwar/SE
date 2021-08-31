@@ -1,34 +1,32 @@
 
-TD3: Interruptions et buffers circulaires
+Tutorial 3: Interrupts and ring buffer
 ==========================
 
 .. image:: /img/spark.png
     :class: right
 
-Interruptions USART
+UART and interrupt
 -------------------
 
 .. step::
 
-    Mettez en place une interruption se déclenchant lorsqu'un octet est reçu ou lorsque
-    le buffer d'envoi est disponible
+    Setup an interruption triggered when some byte is received or when buffer is available
+    to transmit to avoid the need of polling.
 
 
 .. note::
-    L'interruption indiquant que le microcontrôleur est prêt à transmettre risque de se
-    déclencher en boucle, il faudra donc l'activer uniquement au moment où vous souhaiterez
-    transmettre quelque chose, et la stopper lorsque le transfert sera terminé.
+    The interrupt indicating that the buffer is ready to transmit will be always
+    triggered if you don't send anything; you might want to enable it only when you
+    have something to send, and disable it after.
 
-
-Buffer circulaire
+Ring buffer
 ------------------
 
 .. step::
 
-    Mettez en place un buffer circulaire permettant de stocker les données à envoyer
-    ainsi que les données reçues.
+    Setup a ring buffer allowing you to store data to send and received data.
 
-    Vous pourrez alors disposer par exemple des fonctions ci-dessous:
+    Here is an example of the methods you can have to use your UART port:
 
 .. code-block:: c
 

@@ -1,22 +1,22 @@
 
-TD4: PlatformIO (ADC et Servo)
+Tutorial 4: PlatformIO (ADC et Servo)
 ==========================
 
 .. image:: /img/platformio.png
     :class: right
 
-Mise en place
+Setting up
 -------------
 
 .. step::
 
-    Après avoir installé au moins PlatformIO core, créez un dossier, et dans ce dernier lancez:
+    After installing at least PlatformIO core, create a directory and run:
 
     .. code-block:: bash
 
         pio project init --board uno
 
-    Observez le contenu de ``platformio.ini``:
+    Have a look at ``platformio.ini`` file:
 
     .. code-block:: ini
 
@@ -25,27 +25,27 @@ Mise en place
         board = uno
         framework = arduino
 
-    Pour compiler:
+    To compile:
 
     .. code-block:: bash
 
         pio run
 
-    Pour flasher:
+    To flash:
 
     .. code-block:: bash
 
         pio run -t upload
 
-    Utilisez l'API de Arduino pour faire clignoter une LED
+    Use Arduino's API to get a blinking LED
 
-Échantillonnage ADC et servomoteur
+Sampling ADC and servos
 ----------------------------------
 
 .. step::
 
-    Utilisez l'API d'Arduino pour prendre des échantillons (ADC) d'une photorésistance de votre kit
-    et contrôleur le servomoteur de modélisme:
+    Use Arduino's API to get some ADC samples from a photoresistor from your kit and
+    control the servomotor:
 
     .. center::
         .. image:: /img/photoresistor.webp
@@ -53,10 +53,11 @@ Mise en place
         .. image:: /img/sg90.jpg
             :width: 300
 
-Retour sur l'ADXL345
+Back to ADXL345
 --------------------
 
 .. step::
 
-    Sur le site de `PlatformIO <https://platformio.org/>`_, trouvez la bibliothèque qui permet de
-    contrôler l'ADXL345 utilisé précédemment et utilisez là pour échantillonner.
+    On `PlatformIO <https://platformio.org/>`_, find the library allowing you to communicate
+    with ADXL345 and install it. Use it to get the samples from the accelerometer.
+    

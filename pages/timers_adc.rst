@@ -1,4 +1,4 @@
-Timers et ADC
+Timers and ADCs
 =============
 
 .. slide::
@@ -6,17 +6,16 @@ Timers et ADC
 DAC
 ---
 
-Le DAC (Ou CNA) est une conversion numérique vers analogique, elle permet à partir d'une
-valeur constituée de plusieurs bits en mémoire (par ex de 0 à 1023) de créer une valeur 
-représentée par un niveau de voltage (par ex. de 0 à 5V).
+DAC stands for Digital to Analog converter, it allows to convert a number represented
+in memory with bits (for eg. from 0 to 1023) to a voltage level (for eg. from 0 to 5V).
 
 .. slide::
 
 **PWM-DAC**
 
 .. textOnly:: 
-    La première solution consiste en un signal périodique qui est ensuite passé dans
-    un filtre passe bas, donnant alors un signal analogique "moyenné".
+    A simple solution to achieve this is to use a periodic signal that goes through
+    a low-pass filter, producing an "averaged" signal:
 
 .. center::
     .. image:: img/pwm_dac.jpg
@@ -26,11 +25,10 @@ représentée par un niveau de voltage (par ex. de 0 à 5V).
 **Thermometer DAC**
 
 .. textOnly:: 
-    Une autre méthode est la méthode du thermomètre, qui se compose d'une chaîne de
-    résistances, avec un aiguillage permettant de diriger un des points du réseau
-    vers la sortie. Cette solution donnera des résultats précis, mais est extrêmement
-    coûteuse, il faut en effet un réseau d'autant d'éléments que de valeur qu'il
-    est possible de produire.
+    Another method is the thermometer one, using a string of resistors allowing to
+    represent all possible values. The output can then be selected using a multiplexer.
+    This solution has a huge footprint, because all values corresponds to a physical point
+    in the circuit.
 
 .. center::
     .. image:: img/thermometer.gif
@@ -40,8 +38,8 @@ représentée par un niveau de voltage (par ex. de 0 à 5V).
 **R2R DAC**
 
 .. textOnly:: 
-    Enfin, le R2R ladder (échelle R/R2) est une combinaison de résistances permettant
-    de combiner plusieurs bits afin de réaliser la valeur analogique voulue:
+    Finally, R2R ladder is a way to combine resistors to produce a voltage level using
+    directly the bits representation:
 
 .. center::
     .. image:: img/r2r.png
@@ -51,11 +49,10 @@ représentée par un niveau de voltage (par ex. de 0 à 5V).
 ADC
 ---
 
-L'ADC (ou CAN) est l'opération inverse du DAC, qui consiste à échantillonner un niveau de 
-voltage pour obtenir une valeur numérique.
+ADC is inverse of DAC, standing for Analog to Digital Convertion. It consists in sampling
+a voltage level to represent it numerically in the program.
 
-Le design d'un ADC est souvent proche du design dual DAC, en comparant le voltage avec l'entrée
-à échantilloner.
+ADC design is dual to DAC ones, comparing produced voltages with the input to sample:
 
 .. slide::
 
@@ -63,13 +60,12 @@ Le design d'un ADC est souvent proche du design dual DAC, en comparant le voltag
     .. image:: img/adc_flash.png
 
 .. textOnly::
-    Par exemple, l'ADC "flash" (ci-dessus) est le dual du DAC thermomètre, en contenant
-    toutes les possibilités de voltage mesurables.
+    For example, the "flash" ADC (above) is the dual to thermometer DAC, containing all
+    possible voltage levels.
 
 .. slide::
 
-Dans l'Atmega328p, l'ADC est basé sur des comparaisons successives avec les valeurs d'un DAC utilisé
-en interne:
+In ATmega328P, the ADC is based on successive comparisons using values from an internal DAC:
 
 .. center::
     .. image:: img/atmega_dac.png
@@ -82,38 +78,40 @@ en interne:
 Timers
 ------
 
-Le temps est basé sur un composant de base nommé le **quartz** qui génère un signal
-périodique à une fréquence précise.
+Time is ticked using a low-level oscillator named **quartz** generating a periodic signal
+at a given frequency.
 
 .. discover::
-    Cette horloge peut être accélérée (à l'aide de PLL) ou réduite (à l'aide de *divider*
-    ou de *prescaler*).
+    This clock can be sped up using *PLL*, or sped down using *dividers*
 
 .. slide::
 
-Fonctionnement
+Operation
 ~~~~~~~~~~~~~~
 
-Un timer est une fonctionnalité configurable, qui aura pour effet d'incrémenter un registre
-à une certaine fréquence.
+A timer is a configurable feature, where an initial clocks increments a register at
+a given frequency.
 
 .. discover::
-    Lorsque ce registre atteindra sa valeur maximale, il repartira à 0, c'est le dépassement
-    (*overflow*).
+    When this register reaches its maximum value, it will go back to 0, this is
+    **overflow**
 
 .. discover::
-    C'est en général à ce moment là qu'une interruption peut avoir lieu, pour déclencher un
-    événement périodique.
+    Dependeing on the timer, this maximum value can be the representation of the
+    value (like ``0xFF`` or ``0xFFFF``) or set by user to arbitrary value.
+
+.. discover::
+    An interrupt can be used at this particular time to trigger some periodical event.
 
 .. slide::
 
 PWM
 ~~~
 
-Un timer est souvent accompagné d'un module permettant de générer des PWM hardware.
+Often, timers comes with the possibility to generate output hardware PWM.
 
-Dans ce cas, l'état d'une broche peut être modifiée selon l'état du timer, et ce 
-automatiquement par le microcontrôleur.
+In this case, the state of a pin can be changed each time the timer reaches 0 or
+a particular value:
 
 .. slide::
 

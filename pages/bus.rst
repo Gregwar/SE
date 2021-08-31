@@ -187,17 +187,15 @@ SPI
 
 .. textOnly::
     SPI (Serial Peripheral Interface) is a full-duplex and synchronous bus.
-    Some devices are 
-    SPI (Serial Peripheral Interface) est un bus full-duplex et synchrone. Sur
-    un bus SPI est présent un maître et des esclaves.
+    On a SPI bus, there is one master and several slaves.
 
-    Il est en général composé de 4 fils:
+    It is using 4 lines:
 
-    * **SCK**: L'horloge indiquant sur front montant ou descendant le moment ou un
-      bit est transmis
-    * **MOSI** et **MISO**: respectivement Master Output/Slave Input et Master Input/Slave
-      Output, les lignes qui transmettent les données
-    * **CS**: Le "Chip Select", qui indique à chaque périphérique si il est activé ou non
+    * **SCK**: The clock indicating when bits are transmitted (synchronous)
+    * **MOSI** and **MISO**: respectively *Master Output/Slave Input* and *Master Input/Slave Output*
+    * **CS**: For *Chip Slect*, indicating to a slave if it is activated (this allows multiple slave
+    to share *MOSI* and *MISO*)
+
 
 .. center::
     .. image:: img/spi.png
@@ -205,9 +203,8 @@ SPI
 .. slide::
 
 .. textOnly::
-    Typiquement, le maître écrit une opération de lecture ou d'écriture sur sa ligne, puis
-    continue éventuellement d'envoyer des coups d'horloge pour lire les données depuis
-    l'esclave.
+    Master is always ticking the clock, meaning that when a slave is responding, it is still
+    ticked by the master.
 
 .. center::
     .. image:: img/spi_diagram.jpg
@@ -215,8 +212,7 @@ SPI
 .. slide::
 
 .. important::
-    SPI est également très répandu, car il permet d'atteindre des grandes vitesses (plusieurs
-    dizaines de Mbit/s).
+    SPI is widespread, and allows for high bandwidth (more than 10 Mbit/s)
 
 .. .. slide::
 

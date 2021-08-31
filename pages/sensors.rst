@@ -1,22 +1,20 @@
-Capteurs
+Sensors
 ========
 
-Consignes
+Instructions
 ~~~~~~~~~
 
-* Expliquer ce que le capteur mesure et comment (principes physiques)
-* Donner des exemples d'applications du capteur
-* On vous fournira une référence "low-cost", essayez d'identifier les
-  spécifications, et de trouver des références plus chères, et expliquez
-  ce qui justifie la différence de prix
-* Faites fonctionner le composant qu'on vous fournit avec votre kit Arduino,
-  et expliquez lors de votre passage comment il fonctionne (bus? registres?
-  analogique/digital? voltage? ...)
+* Explain what your sensor is measuring and how it is physically achieving it
+* Give some application examples for your sensor
+* You will be provided some low-cost product, identify its specifications, and find
+more expansive and industrial ones. Explains why is the price so different
+* Get your sensor working with your Arduino Uno kit, and explain how your
+particular sensor works (bus? registers? analog/digital? voltage? ...)
 
 .. note::
-    Vous pouvez vous aider de PlatformIO
+    You can use PlatformIO
 
-Capteurs à chosir
+Sensors to select
 ~~~~~~~~~~~~~~~~~
 
 .. toctree::

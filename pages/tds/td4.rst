@@ -1,42 +1,40 @@
 
-TD4: Plus loin avec l'ADXL345
+Tutorial 4: Further with ADXL345
 ==========================
 
 .. image:: /img/spark.png
     :class: right
 
-Interruption externe
+External interrupt
 --------------------
 
 .. step::
 
-    **Lisez la documentation de l'ADXL345 du TP précédent concernant les interruptions**
+    **Read ADXL345 documentation from previous tutorial concerning interrupts**
 
-    * A quoi peuvent-elles servir?
-    * Comment les interfacer avec votre microcontrôleur?
+    * What are they used for?
+    * How can you interface it with your microcontroller?
 
 .. step::
 
-    **Implémentation de l'interruption DATA_READY**
+    **Implementing the DATA_READY interrupt**
 
-    Câblez correctement le composant et faites en sorte que l'interruption *INT1*
-    se déclenche sur un *DATA_READY* et provoque la lecture d'un nouvel échantillon
-    par votre microcontrôleur.
+    Wire the component properly and use *INT1* to trigger when a *DATA_READY* occurs and
+    call a routine to read a new sample from your microcontroller.
 
 Timer
 -----
 
 .. step::
 
-    Mettez en place un timer qui vous permettra de mesurer le temps écoulé entre deux
-    instants.
+    Setup a timer allowing you to measure the time spent between to moments.
 
 .. step::
 
-    A l'aide du timer, mesurez le nombre d'échantillons reçus par seconde.
+    With the help of this timer, estimate the number of sample per seconds.
 
 .. step::
 
-    Vérifiez que ce nombre correspond à celui annoncé par l'ADXL345. Modifiez la fréquence
-    de sortie et vérifiez que la mesure change.
+    Check out that this number matches the one you can read in ADXL345 documentation. Change
+    this sampling frequency and check that the measure is indeed changing.
 
