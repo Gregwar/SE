@@ -13,7 +13,7 @@ Consider the following code:
     void uart_send(char *str) {
         while (*str != '\0') {
             // Waits to be ready to send next byte
-            while (UCSR0A & _BV(UDRE0));
+            while (!(UCSR0A & _BV(UDRE0)));
             // Sends the next byte
             UDRE0 = *(str++);
         }
