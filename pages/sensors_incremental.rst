@@ -1,13 +1,13 @@
-Encodeur incrémental
+Incremental sensor
 ==================
 
 .. center::
     .. image:: /img/incremental.png
 
-* Un capteur incrémental
-* `Lien d'achat <https://www.aliexpress.com/item/32877808571.html>`_
+* Incremental sensor
+* `Buying link <https://www.aliexpress.com/item/32877808571.html>`_
 
-Fiche descriptive:
+Buyer's description:
 
     Features : 
     360 p/r (Single-phase 360 pulses /R,Two phase 4 frequency doubling to 1440 pulses) 

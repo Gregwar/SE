@@ -1,7 +1,7 @@
-Distance
+Distance sensors
 ========
 
-Infrarouge
+Infrared
 ----------
 
 .. center::
@@ -9,9 +9,9 @@ Infrarouge
 
 * GP2Y0A21
 * `Datasheet </files/gp2y0a21.pdf>`_
-* `Lien d'achat <https://www.aliexpress.com/item/4000587198579.html>`_
+* `Buying link <https://www.aliexpress.com/item/4000587198579.html>`_
 
-Ultrason
+Ultrasonic
 ---------
 
 .. center::
@@ -19,4 +19,4 @@ Ultrason
 
 * HC-SR04
 * `Datasheet </files/hcsr04.pdf>`_
-* `Lien d'achat <https://www.aliexpress.com/item/32713522570.html>`_
+* `Buying link <https://www.aliexpress.com/item/32713522570.html>`_

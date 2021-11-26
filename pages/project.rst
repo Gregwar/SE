@@ -1,69 +1,67 @@
-Projet: afficheur à persistance rétinienne
+Project: Persistent of View
 ==========================================
 
-Le but de ce projet est de programmer un afficheur à **persistance rétinienne**.
-Un bandeau de 16 LEDs montés sur une carte électronique elle-même montée sur un moteur
-est mis en rotation, en changeant la configuration des LEDs, il est ainsi possible d'en faire
-un afficheur:
+The goal of this project is to program a **persistent of view** display.
+A 16 leds strip is assembled on a board itself assembled on a rotating motor. By changing
+the leds configuration while it's moving, it is then possible to display things:
 
 .. center::
     .. youtube:: syYFvFRE7No
 
 .. important::
-    `Télécharger le schéma de la carte </files/pov.pdf>`_
+    `Board's schematics </files/pov.pdf>`_
 
-#=) Contraintes
+#=) Constraints
 ~~~~~~~~~~~~~~~
 
-* Le projet se fera par groupes (à définir en classe),
-* Vous n'utiliserez pas de bibliothèque externe, on programmera ce projet en *bare-metal*,
-  comme dans les TDs,
-* Vous devrez créer une dépôt git **privé** et le partager avec vos enseignants.
+* This is a group projects (to be defined during the class),
+* You can't use any external library, it will be programmed using *bare-metal*, just like
+  we did during tutorials
+* You should create a **private** git repository and share it with your teachers.
 
 .. image:: /img/pov.png
     :class: right
 
-#=) Prise en main du matériel
+#=) Getting started with hardware
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#~) Liste des composants
+#~) Components list
 -------------------------------------
 
-Voici les composants qui vous seront fournis:
+Here are provided components:
 
-1. `Une carte électronique POV </files/pov.pdf>`_
-2. `Deux aimants, diamètre 12mm, épaisseur 5mm <https://fr.aliexpress.com/item/1005001404825174.html>`_
-3. `Un moteur (ventilateur) 60x60x25mm, avec un axe vissable monté dans la boîte en plastique
+1. `One "POV" board </files/pov.pdf>`_
+2. `Two magnets, diameter 12mm, thickness 5mm <https://fr.aliexpress.com/item/1005001404825174.html>`_
+3. `One (fan) motor 60x60x25mm, with a threaded shaft assembled in the plastic box
   <https://www.aliexpress.com/item/32882742546.html>`_
-4. `Une alimentation 12V, connecteur DC 5.5mm <https://www.aliexpress.com/item/32980020011.html>`_
-5. `Un boîtier de programmation USBASP 10 broches avec adaptateur vers 6 broches
+4. `A 12V power supply, with DC 5.5mm connector <https://www.aliexpress.com/item/32980020011.html>`_
+5. `A programming module, USBASP 10 pins, with 10 to 6 pins adapter
   <https://fr.aliexpress.com/item/32670511994.html>`_
-6. `Une clé Allen 2.5mm <https://www.bricovis.fr/std/cles-males-allen-35.php>`_
+6. `An Allen hexkey 2.5mm <https://www.bricovis.fr/std/cles-males-allen-35.php>`_
 
-#~) Programmation
+#~) Programming
 -------------------------------------
 
-La carte comporte un processeur "sorti d'usine", il n'y a pas de *bootloader*
-logiciel dessus. Vous devrez pour le
-programmer utiliser un boîtier permettant d'utiliser le programmateur ISP.
-(En l'occurrence, nous utiliserons le boîtier *low-cost* USBASP).
+The board is assembled with a brand new microcontroller, there is no *bootloader*
+on it. You have to program it using your USBASP programming module (which is a
+*low-cost* version of ISP).
 
 .. note::
-    Indications pour avrdude, utilisez: ``-c usbasp``
+    In ``avrdude``, use: ``-c usbasp``
 
 .. warning::
-    Le boîtier USBASP est accompagné d'un adaptateur pour se connecter à l'ISP 6 broches,
-    ce dernier n'est pas doté d'un détrompeur, c'est pour cela que ce dernier a été marqué d'un
-    trait blanc.
+    The USBASP comes with an adapter to connect it to 6 pins ISP. This one is not equiped with a
+    keyed connector, that is why it is marked with a white dash. If any doubt about the orientation
+    of the connector please ask your teacher.
 
-Adaptez tout d'abord votre ``Makefile`` de manière à pouvoir programmer la carte.
-Vous pouvez essayer de faire clignoter la LED connectée à ``PD6``.
+First, adapt your ``Makefile`` to be able to program this board. You can first try getting the
+``PD6`` blue led blinking.
 
-La fréquence du CPU est de 13Mhz (``13000000``), et le processeur est déjà réglé
-pour utiliser l'horloge externe.
+CPU's frequency is 13Mhz (``13000000``), and the microcontroller's fuses are already setup to use
+an external clock.
 
-Sous Windows, il est possible que le boîtier ne soit pas reconnu, vous pouvez utiliser le logiciel
-Zadig pour installer le pilote, avec ces paramètre:
+If you use Windows, it possible that the programming module is not detected. You can use
+Zadig software to install drivers, with the following settings:
 
 .. center::
     .. image:: /img/zadig.png
@@ -71,147 +69,147 @@ Zadig pour installer le pilote, avec ces paramètre:
 #~) Batteries
 -------------
 
-La batterie du POV charge automatiquement lorsqu'il est branché à un PC (via les
-5V fournis en USB), que l'interrupteur du POV soit allumé ou non.
-La LED rouge "Charge" reste allumée tant que la batterie n'a pas fini de charger.
+POV's batteries are automatically charging when you plug it to the computer (using
+the USB 5V), even if the POV's switch is off. The red LED "charge" is kept on
+until the charge is over.
 
-Pensez à vérifier que le POV est éteint quand vous le rangez, vous pouvez vérifier
-cela à l'aide de la LED *power* (verte).
+Please check that your POV is turned off when you are stopping working, you can
+check it by watching if green *power* LED is off.
 
-#~) Communication série
+#~) UART communcation
 -----------------------
 
-La carte est équipée d'une puce *bluetooth HC-05*. Pour communiquer avec, vous
-aurez besoin de faire fonctionner la communication série, et de la configurer
-de la bonne manière.
+The board features a *bluetooth HC-05* chip. To communicate with it, you will
+need to get the UART bus working, and to configure it the proper way.
 
-La mise en place de cette communication série avec la carte est vitale pour
-pouvoir dialoguer avec la carte pendant qu'elle tourne, et ainsi *débugger* ou pouvoir
-la contrôler.
+Setting up the communication with the board is essential to be able to *debug* or
+control it (like setting the time of the clock).
 
-Un numéro est étiqueté sur l'arrière de votre carte, il correspond à votre numéro de
-groupe. La puce Bluetooth a déjà été configurée avec les paramètres:
+A number is labeled on your PCB (for example ``POV 34``). The Bluetooth chip is already
+configured with following parameters:
 
-    Nom: POV**N** 
+    Name: POV**N** 
     Pin: 00**N** 
     Baud rate: 38400
 
-Où N est votre numéro de groupe (par exemple ``POV17`` aura pour PIN ``0017``).
+Where ``N`` is your group number (for example ``POV 34`` will have ``0034`` for PIN).
 
 .. note::
-  Afin de communiquer en Bluetooth, vous pouvez utiliser votre PC, mais aussi votre téléphone
-  portable.
+    To communicate with the Bluetooth board, you can use your PC, but also your mobile phone.
   
 
 #~) Charset
 ~~~~~~~~~~~
 
-À un moment donné, il sera nécessaire de dessiner des caractères sur le POV. Pour ce faire, nous vous
-recommandons de générer du code C pour embarquer les images dans la mémoire de la carte.
+At some point you will have to draw some messages on the POV. For this, we recommend you
+write some code to generate some C code to embed the characters images in the board memory.
 
-Par exemple, vous pourriez utiliser Python et OpenCV afin d'ouvrir des fichiers PNG, d'accéder aux
-pixels de ces derniers et de générer du code.
+An example is using Python and OpenCV to open PNG files and access them at pixel level to
+generate C code.
 
-#=) Prise en main
+#=) Software roadmap
 ~~~~~~~~~~~~~~~~~~~
 
 .. step::
 
-    #~) Pilotage des LEDs
+    #~) Handling LEDs
     ---------------------
 
-    Comme vous pouvez le voir sur le schéma, la carte est équipée de 16 LEDs et
-    d'une puce qui permet de les piloter en courant.
+    As you can notice on schematics, the board features 16 LEDs and a driver allowing
+    to control their current.
 
-    Vous devez implémenter le code permettant d'allumer et d'éteindre ces LEDs.
-
-.. step::
-
-    #~) Capteur magnétique
-    ----------------------
-
-    Le capteur magnétique de la carte permet de détecter la présence d'un aimant.
-    Testez-le en vérifiant que vous arrivez bien à différencier le cas où il est
-    devant l'aimant et où il n'est pas devant l'aimant.
-
-    Désormais, programmez une interruption pour qu'une fonction soit automatiquement
-    appelée lorsque vous passerez devant l'aimant.
+    You have to implement code to turn them on and off.
 
 .. step::
 
-    #~) Calcul de l'heure
+    #~) Magnetic sensor
     ----------------------
 
-    À l'aide de timers, vous devez être capable de calculer l'heure courante.
+    The hall effect magnetic sensor allows to detect magnet presence.
+    You can test it by simply turning a LED on or off when a magnet is detected.
+    
+    You can then setup an external interrupt that will be automatically triggered when
+    the magnet is present.
 
-    Vous devrez être en mesure de définir l'heure courante en Bluetooth depuis votre
-    ordinateur ou téléphone portable.
+.. step::
 
-#=) Modes de fonctionnement
+    #~) Computing current time
+    ----------------------
+
+    With the help of timers, you should be available to compute current time.
+
+    Write some code to setup the initial time through Bluetooth communication from your
+    computer or your phone.
+
+#=) Modes of operation
 ~~~~~~~~~~~~~~~~~~~
 
 .. warning::
 
-    Note: gardez la possibilité de présenter tous les modes ci-dessous à la soutenance
+    Note: keep an easy way to do a demo of all the asked modes during the project's defense
 
 .. step::
 
-    #~) Affichage horloge à aiguilles
+    #~) Displaying a needles clock
     ---------------------------------
 
-    Vous avez maintenant tous les éléments pour pouvoir programmer votre horloge.
-    Le but ici est d'afficher l'heure avec des "aiguille" en LEDs.
+    You now can assemble all those elements to program your clock. The first goal will
+    be to display time using LEDs "needles".
 
     .. center::
         .. image:: img/clock_1.jpg
 
 .. step::
 
-    #~) Horloge numérique numérique arrondie
+    #~) Rounded digital clock
     ----------------------------------------
 
-    Affichez l'heure avec des nombres, sans compenser la distorsion de
-    la rotation, comme ceci:
+    The next goal is to show the current time using digits, without
+    compensating rotation's distortion, like this:
 
     .. center::
         .. image:: img/other_clock.jpg
 
 .. step::
 
-    #~) Affichage horloge numérique générique
+    #~) Straight digital clock
     -----------------------------------------
 
-    Essayez ensuite de compenser la distorsion pour avoir une heure
-    "droite", ayant ainsi un afficheur générique:
+    Now, compensate for distortion by displaying straight digital clock:
 
     .. center::
         .. image:: img/clock_2.jpg
 
 .. step::
 
-    #~) Attentes techniques du projet
+    #~) Technical expectations
     ---------
 
-    - Granularité et précision spatiale. Avec quelle précision êtes vous capables de créer un point de lumière à une coordonnée donnée ? Quelle est la taille minimale de ce point ?
-    - Granularité et précision temporelle. Fréquence de rafraîchissement des LEDs ? Avec quelle granularité êtes vous capables de mesurer le temps de rotation du POV ?
-    - Quelle est la vitesse de rotation du POV ? Quantifiez sa stabilité.
-    - Précision de l'heure. Si l'heure que vous insérez aujourd'hui est parfaite, quantifiez l'erreur attendue sur l'heure au bout de 6 mois d'utilisation.
-    - Ordres de grandeurs des actions. Combien coûte (en temps et en coups d'horloge) une interruption ? Une multiplication et une division flottante ? Une multiplication et une division entière ?
-    - Combien de mémoire utilisez vous ? Combien il en reste ? Quels sont les différents types de mémoire disponibles et à quoi servent-ils ?
+    - Spatial accuracy and granularity. What is the precision you can create a dot at a given coordinate?
+    What is the minimum size of this dot?
+    - Temporal accuracy and granularity. What is the LEDs refreshing frequency ? What is the granularity you
+    can reach to measure the boards's rotation duration?
+    - What is the board's rotating speed? Quantify its stability
+    - Time estimation accuracy. If you start with a perfect time, how much will it drift after 6 month of use?
+    - Code efficiency. What is the cost (in time and in number of cycles) of your interrupts? Of a floating
+    multiplication and division? Of an integer multiplication and division?
+    - How much memory do you use? How much is left? What are different types of memory available and what are they
+    used for?
 
-#=) Firmware de démo / test
+#=) Test firmware
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Si vous avez un doute sur votre POV, vous pouvez programmer le firmware de test suivant:
+If any doubt about your board, you can flash the following test firmware:
 
 * Télécharger `pov-demo.bin <files/pov-demo.bin>`_
 
-Avec ce firmware:
+With this firmware:
 
-* La LED bleue (``PD6``) clignote au démarrage
-* Les LEDs blanches s'allument à tour de rôle
-* Si vous placez l'aimant devant le capteur à effet hall, la couleur des LEDs blanches s'inversent
+* Blue (``PD6``) LED blinks at startup
+* White LEDs are turning on one by one
+* If you present a magnet to the hall effect sensor, the white LEDs colors are inverted
 
-..  Si vous vous connectez en Bluetooth et envoyez un message, la carte répondra ``POV echo: message`` (ou
-..   ``message`` sera ce que vous avez envoyé)
+.. If you connect using Bluetooth and send a message, the firmware should answer ``POV echo: message``,
+.. where ``message`` is the message you sent
+
   

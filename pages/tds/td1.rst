@@ -2,63 +2,70 @@
 .. image:: /img/uno.png
     :class: right
 
-TD1: Bye bye, Arduino
+Tutorial 1: Bye bye, Arduino
 =====================
 
-Le but de ce court TD est de programmer une carte **Arduino Uno** sans utiliser l'IDE
-proposé par **Arduino**.
+The goal of this tutorial is programming **Arduino Uno** board without using **Arduino**'s IDE.
 
 Ressources
 -------------------------
 
 .. important::
     `Elegoo Super Starter Kit <https://www.elegoo.com/product/elegoo-uno-project-super-starter-kit/>`_ 
-    `Documentation du ATmega328P (datasheet) </files/atmega328p.pdf>`_  
-    `Correspondance des broches Arduino UNO/ATmega328P <https://www.arduino.cc/en/Hacking/PinMapping168>`_  
-    `Schéma de l'Arduino Uno <https://www.arduino.cc/en/uploads/Main/Arduino_Uno_Rev3-schematic.pdf>`_
+    `ATmega328P documentation (datasheet) </files/atmega328p.pdf>`_  
+    `Pin mapping for UNO/ATmega328P <https://www.arduino.cc/en/Hacking/PinMapping168>`_  
+    `Arduino Uno schematics <https://www.arduino.cc/en/uploads/Main/Arduino_Uno_Rev3-schematic.pdf>`_
 
-Chaîne de compilation
+Compilation toolchain
 ---------------------
 
 .. step::
 
-    Votre objectif est d'écrire un ``Makefile`` permettant de compiler et de flasher le code
-    suivant, qui allume la LED de la carte (``PB5``, marquée "L"):
+    Your goal is to write a ``Makefile`` allowing compiling and flashing of the following code,
+    that enables on-board LED (``PB5``, marked "L" on the PCB):
 
     .. code-block:: cpp
 
         #include <avr/io.h>
 
         int main() {
-            // Active et allume la broche PB5 (led)
+            // Enables and turn the PB5 pin ON (led)
             DDRB |= _BV(PB5);
             PORTB |= _BV(PB5);
         }
 
-    Les principales étapes que vous devrez suivre:
+    Here are the main steps will have to follow:
 
-    * Utilisez ``avr-gcc``, compilateur pour avr afin de produire le binaire
-    * Utilisez ``avr-objcopy`` afin de produire un binaire "brut" (non elf)
-    * Utilisez ``avrdude``, outil permettant de programmer la carte
+    * Use ``avr-gcc``, compiler to produce the binary
+    * Use ``avr-objcopy`` to extract a "raw" binary (not elf)
+    * Use ``avrdude``, a tool to flash the board
 
-    Vous pourrez par exemple taper ``make`` pour produire le binaire puis ``make install`` pour
-    l'installer à bord de votre carte.
+    Make it so that you will run:
 
-Contrôle d'un stepper
+    * ``make`` to build the firmware
+    * ``make install`` to send the firmware on the board
+
+    .. note::
+        To install the toolchain:
+
+        * Ubuntu: ``apt-get install avrdude gcc-avr avr-libc``
+        * Windows: You can install Arduino, and then find the installation directory, the toolchain will be available there
+
+Controlling a stepper
 ---------------------
 
 .. step::
 
-    Le kit vous fournit un moteur à pas (28BYJ-48) et son driver (ULN2003APG):
+    The Arduino kit you have provides a stepper motor (28BYJ-48) and its driver (ULN2003APG):
 
     .. center::
         .. image:: /img/stepper.png
         .. image:: /img/stepper_schematics.png
 
-    Branchez ``-`` sur ``GND``, ``+`` sur ``VIN`` et ``IN1``, ``IN2``,
-    ``IN3`` et ``IN4`` sur les broches de votre choix.
+    Plug ``-`` on ``GND``, ``+`` on ``VIN`` on ``IN1``, ``IN2``,
+    ``IN3`` on ``IN4`` on any GPIO you want.
 
-    Le contrôle se fait alors très simplement en basculant de step en step:
+    To control it, you can simply switch it step by step:
     
     ===========  ============= ============= ============= =============
                  IN1           IN2           IN3           IN4
@@ -73,4 +80,4 @@ Contrôle d'un stepper
     Step4        1             0             0             1
     ===========  ============= ============= ============= =============
 
-    Utilisez un délai pour attendre entre deux changements de phase.
+    Use some delay to wait in between each phase.

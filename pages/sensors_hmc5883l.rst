@@ -1,10 +1,10 @@
-Magnétomètre
+Magnetometer
 ============
 
 .. center::
     .. image:: /img/hmc5883l.png
 
-* HMC5883L en breakout
+* HMC5883L breakout
 * `Datasheet </files/hmc5883l.pdf>`_
-* `Lien d'achat <https://www.aliexpress.com/item/32912371637.html>`_
+* `Buying link <https://www.aliexpress.com/item/32912371637.html>`_
 

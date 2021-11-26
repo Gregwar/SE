@@ -1,48 +1,45 @@
-Interruptions et ordonnancement
-===============================
+Interrupts and scheduling
+=========================
 
 .. slide::
 
-Problème
+Problem
 --------
 
-Considérons le code suivant:
+Consider the following code:
 
 .. code-block:: c
 
     void uart_send(char *str) {
         while (*str != '\0') {
-            // Attend d'être prêt pour l'envoi du 
-            // prochain octet
+            // Waits to be ready to send next byte
             while (UCSR0A & _BV(UDRE0));
-            // Envoie le prochain octet
+            // Sends the next byte
             UDRE0 = *(str++);
         }
     }
 
 .. slideOnly::
     .. discoverList::
-    * Imaginons que nous soyons à 9600 bauds, avec 1 bit start
-      et 1 bit stop
-    * Combien de temps faudrait t-il pour exécuter ``uart_send("Bonjour");``?
-    * Sur un micro-contrôleur à 16Mhz, à combien de cycle cela correspond?
+    * Imagine we are using a 9600 bauds bus, with 1 start bit and 1 stop bit
+    * How much time does it take to execute ``uart_send("Hello world");``
+    * On a 16Mhz microcontroller, how many cycles are then wasted?
 
 .. textOnly::
-    Ce code est fonctionnel, mais très gourmand en ressources, car il occupera
-    le processeur pendant environ 6.5ms (soit plus de 100000 cycles sur un processeur
-    à 16Mhz).
+    This code works, but is very greedy in computational ressource, because it
+    will get the processor busy for a while.
 
 .. slide::
 
-Ordonnancement
+Scheduling
 -------------
 
-**Comment faire plusieurs choses en même temps ?**
+**How can we do multiple things simultaneously?**
 
-Ce problème est résolu sur votre ordinateur par un ordonnanceur (*scheduler*), mais sur votre
-carte il n'y en a aucun!
+This problem can be solved using a scheduler, which is basic component of an operating system,
+but we are currently using none!
 
-Il est cependant possible de faire plusieurs choses en même temps de manière **coopérative**, par exemple:
+It is however possible to manually do simultaneous things code using **cooperative scheduling**:
 
 .. code-block:: c
 
@@ -55,12 +52,12 @@ Il est cependant possible de faire plusieurs choses en même temps de manière *
         }
     }
 
-Ici, ``usart_tick`` et ``leds_tick`` sont des fonctions écrites de manière coopératives; elles font un
-peu de calcul et rendent la main systématiquement.
+Here, ``usart_tick`` and ``leds_tick`` are cooperative methods; they will make some computation
+and give back execution by returning quickly
 
 .. slide::
 
-Le code présenté précedemment peut être réécrit de manière ordonancée:
+Here is a way to arrange precedent code using scheduling:
 
 .. code-block:: c
 
@@ -85,22 +82,23 @@ Le code présenté précedemment peut être réécrit de manière ordonancée:
 
 .. slide::
 
-Présentation
+Polling and interrupts
 ------------
 
-Dans l'exemple de code vu précédemment, on attendait de manière active avec une boucle, on appelle
-ceci la **scrutation** (ou le *polling*). Ensuite, nous avons vu qu'on pouvait ordonancer manuellement
-la scrutation, ce qui permet de rendre la main au CPU, mais il va quand même passer un grand nombre
-de cycle à vérifier encore et encore la valeur d'un bit.
+In the first example, we waited actively for the buffer to be available with a loop, this
+is what we call **polling**.
 
 .. discover::
-    Les interruptions sont des mécanismes "événementiel": le processeur va "sauter" à 
-    une adresse sur certaines conditions.
+    Then, we introduced the simple concept of manual **scheduling**, but the microcontroller will
+    still spend a lot of time executing tests that are mostly false.
+
+.. discover::
+    One feature of microcontrollers can help us here: **interrupts**. Those are simply routines
+    executed when some event occurs. The processor then simply automatically "jump" to a given method.
 
 .. textOnly::
-    Le code binaire que l'on placera sur un micro contrôleur commencera par une table
-    des interruptions. A chaque case de cette table, on trouvera l'adresse à laquelle il faut
-    se rendre si une interruption donnée se déclenche.
+    The binary code we upload starts with an **interruption vector table**. Every entry in this
+    table matches an interruption type and is giving a target address for the routine to execute.
 
 .. slide::
 
@@ -109,71 +107,72 @@ de cycle à vérifier encore et encore la valeur d'un bit.
 
 .. slide::
 
-Exemple
+Example
 -------
 
-Par exemple, lorsque l'envoi d'un octet se termine sur l'USART, on peut déclencher
-activer l'interruption correspondante:
+For example, when the sending buffer becomes available for USART, we can trigger
+the corresponding interruption:
 
-Cette version, dite en scrutation:
+This polling version:
 
 .. code-block:: c
     // Attend de pouvoir envoyer le prochain octet
     while (!(UCSR0A & _BV(UDRE0)));
 
-Peut être réécrite en utilisant l'interruption correspondange:
+Can be re-written to use interruption instead:
 
 .. code-block:: c
-    // Active l'interruption à la réception
+    // Enables buffer-available interruption
     UCSR0B |= _BV(UDRIE0); 
     ...
-    void __vector_20() __attribute__ ((signal,used));
-    void __vector_20()
+    ISR(USART_UDRE_vect) {
     {
         // ...
     }
 
 .. slide::
 
-Les en-têtes du constructeur fournissent la macro suivante:
+Where ``ISR`` is a macro provided by the constructor, declaring a method with the
+``signal`` attribute, indicating that it should be connected in the vector table:
 
 .. code-block:: c
 
-    ISR(USART_UDRE_vect) {
-        // Envoi de l'octet suivant
-    }
+    #  define ISR(vector)            \
+        void vector (void) __attribute__ ((signal, used)); \
+        void vector (void)
+    #endif
 
 .. slide::
 
 .. warning::
-    **Attention** 
-    Le fait d'être dans une interruption bloque l'arrivée des autres
-    interruptions (selon une politique plus ou moins sophistiquée). Le code d'une
-    interruption est en général court et simple (stocker un octet dans un tableau,
-    passer un flag à vrai etc.).
+    **Warning**
+    When you enter an interruption, it blocks the other interrupts to happening
+    (some more advanced microcontrollers can handled nested interrupts). An interruption
+    routine is highly recommended to be small and simple (store a byte in an array, setting
+    a flag to true etc.); delegating computations to the non-interrupt code.
 
 
 .. slide::
 
-Buffer circulaire
+Ring buffer
 -----------------
 
-Pour gérer l'envoi et la réception de données via un bus comme l'USART, on peut mettre
-en place un buffer circulaire (*ring buffer*), qui permet de socket les données qui n'ont
-pas été transmises (en émission) ou traitée (en réception).
+To handle sending and receiving data using a bus like UART, we can use a ring buffer, allowing
+to store data that are not yet processed.
+
+It can be either TX data that are not yet sent, or RX data that are not been read by code.
 
 .. center::
     .. image:: /img/ring_buffer.gif
 
 .. textOnly::
-    Le principe du buffer circulaire est de stocker un tableau en mémoire ainsi que deux
-    indices, le premier étant l'adresse du prochain élément à lire, et le deuxième l'adresse
-    du prochain élément à écrire.
+    The principle is to store an array in memory with two indexes, the first being the next
+    item to read, and the second one the next item to write.
 
-    Lorsque les indices sont incrémentés, ils le sont modulo la table du tableau (on revient au
-    début lorsqu'on atteint la fin).
+    When indexes are incremented, they are overflowing to the length of the buffer (going
+    back to the begining when they reach the end)
 
-    On peut vérifier si il y a des données à lire lorsque les deux indices sont différents.
+    We can check if there are data to read by comparing indexes.
 
 .. slide::
 

@@ -305,17 +305,18 @@ microcontrollers. Typically ``-Os``:
 .. slide::
 
 .. warning::
-    **Attention**, il ne faut pas confondre l'opérateur ``&&`` et l'opérateur ``&``,
-    tout comme il ne faut pas confondre ``||`` avec `|`.
+    **Warning**, of course, do not confuse ``&&`` operator with ``&``,
+    and do not confuse ``||`` with ``|``.
 
-    Ces derniers sont respectivement des opérateurs logiques (agissant sur des booléens)
-    et binaires (agissant sur des entiers).
+    Those are respectively boolean operators and binary operators.
+
+    For example: ``if (1 & 1)`` will be executed, but ``if (1 & 2)`` will not.
 
 .. slide::
 
-**Exemples**
+**Examples**
 
-Que fait cette macro?
+What is the result of this macro?
 
 .. code-block:: cpp
 
@@ -323,7 +324,7 @@ Que fait cette macro?
 
 .. slide::
 
-Que fait ce bout de code?
+And this snippet?
 
 .. code-block:: cpp
 
@@ -331,7 +332,7 @@ Que fait ce bout de code?
 
 .. slide::
 
-Et celui-ci?
+And this one?
 
 .. code-block:: cpp
 
@@ -339,7 +340,7 @@ Et celui-ci?
 
 .. slide::
 
-Et celui-ci?
+And this one?
 
 .. code-block:: cpp
 
@@ -347,7 +348,7 @@ Et celui-ci?
 
 .. slide::
 
-Et celui-ci?
+And this one?
 
 .. code-block:: cpp
 
@@ -356,49 +357,50 @@ Et celui-ci?
     }
 
 .. textOnly::
-    Il est important de maîtriser ces opérations binaires pour pouvoir facilement
-    travailler sur des registres par la suite.
+    It is important to master binary operators to be able to work on registers on a
+    bitwise level.
 
 .. slide::
 
-Un exemple: les broches d'ATmega
---------------------------------
+Example: pins of ATmega
+------------------------
 
 .. textOnly::
-    Dans la documentation officielle, on trouve l'utilisation des registres permettant
-    de piloter les broches:
+    In official documentation, we can find specification of how to drive pins:
 
 .. center::
     .. image:: img/ddr.png
 
+.. note::
+    Tri-state / Hi-Z here refers to high impedance
+
 .. slide::
 
 .. textOnly::
-    Sachant que, par exemple, un des boîtiers a cette forme:
+    Here is an example of form factor:
 
 .. center::
     .. image:: img/dip.png
 
 .. slide::
 
-Il sera possible de changer la valeur de la broche PB2 comme cela:
+It is then possible to drive ``PB2`` pin like this:
 
 .. code-block:: cpp
 
-    // En-têtes fournies par AVR pour les
-    // registres
+    // AVR headers
     #include <avr/io.h>
 
     int main() {
-        // Paramètre en sortie
+        // Pin is output (low impedance)
         DDRB |= _BV(PB5);
-        // Définit la broche à "High"
+        // The pin is "high" level (eg 5V)
         PORTB |= _BV(PB5);
     }
 
 .. slide::
 
-Voici le code assembleur qui correspondra à ces instructions::
+Here is the produced assembly code matching those instructions::
 
       25 9a           sbi     0x04, 5 ; 4
       2d 9a           sbi     0x05, 5 ; 5
@@ -406,7 +408,7 @@ Voici le code assembleur qui correspondra à ces instructions::
 
 .. slide::
 
-En amont, le compilateur ajoutera le préambule::
+The compiler will add this preamble::
 
       11 24           eor     r1, r1
       1f be           out     0x3f, r1        ; 63
@@ -419,7 +421,7 @@ En amont, le compilateur ajoutera le préambule::
 
 .. slide::
 
-Et l'épilogue::
+And postamble::
 
         00000086 <_exit>:
           86:   f8 94           cli
@@ -429,16 +431,17 @@ Et l'épilogue::
 
 .. slide::
 
-Les GPIOs
----------
+GPIOs
+-----
 
 .. textOnly::
-    Les GPIOs (*General Purpose Input/Outputs*) sont des broches que l'on peut piloter
-    en lecture/écriture à notre guise.
+    GPIOs (*General Purpose Input/Outputs*) are pins that we can drive as input/output
+    for any general purpose.
 
-    Cet exemple montre le schéma logique d'une broche d'ATmega, il est ici possible
-    d'activer la broche en sortie et de la piloter au niveau haut ou bas (milieu du schéma),
-    de l'échantilloner (bas du schéma) et d'y activer une pull-up (haut du schéma).
+    Here, we can see the logical schematics of one pin in the ATmega, it is possible to
+    enable the pin as output and drive it to high or low level (line buffer is in the
+    center of schematics), or setting it as input and sample it (bottom of schematics),
+    optionally with a pull-up (top of schematics).
 
 .. center::
     .. image:: img/atmega-pin.png
@@ -446,8 +449,8 @@ Les GPIOs
 
 .. slide::
 
-Les broches sont en général utilisables en GPIO et peuvent passer en mode alternatif,
-étant alors gérée par une fonctionnalité du contrôleur (pensez par exemple à l'UART).
+All pins are generally usable as GPIOs and can be switched to *alternative function* (AF)
+mode, meaning that is will then be managed by hardware (think for instance of UART).
 
 .. redirection-title:: tds/td1
 

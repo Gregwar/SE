@@ -1,31 +1,30 @@
 
-TD2: Communiquons!
+Tutorial 2: Let's communicate!
 ==================
 
 
 .. image:: /img/adxl345-module.jpg
     :class: right
 
-Port série
-----------
+UART
+----
 
 .. step::
 
-    Votre board **Arduino Uno** est connectée à un émulateur USB/Série, qui permet
-    à votre ordinateur de communiquer avec elle.
+    Your **Arduino Uno** board is connected to an USB/Uart emulator, allowing your computer
+    to discuss with it through USB.
 
-    Écrivez du code qui permettra d'écrire ou de lire des données depuis le port série.
+    Our first goal will be to write some code able to communicate through this port.
 
-    Vous pourrez par exemple utiliser l'outil ``cu``, ou `PuTTy <https://www.putty.org/>`_
-    pour tester la communication depuis un terminal.
+    You can use ``cu`` with command line, or `PuTTy <https://www.putty.org/>`_ to open the
+    port and communicate.
 
 
-Module ADXL345
+ADXL345 Module
 --------------
 
-Nous allons utiliser une puce nommée `ADXL345 </files/adxl345.pdf>`_. Pour
-des raisons pratique, cette puce a été achetée déjà soudée sur une carte
-(*breakout*) dont le nom est GY-291:
+You will be provided a chip named `ADXL345 </files/adxl345.pdf>`_. for practical reasons,
+it is already soldered on a board (we call this *breakout*) named GY-291:
 
 .. center::
 
@@ -35,35 +34,35 @@ des raisons pratique, cette puce a été achetée déjà soudée sur une carte
 
 .. step::
 
-    **Regardez la spécification de la puce**
-    Quel bus est utilisé par cette dernière? L'ATmega328P le supporte t-il?
+    **Have a look at the chip specification**
+    What communication bus is used? 
 
 .. step::
 
-    **Essayez de répondre aux questions suivantes:**
+    **Try answering following questions:**
 
-    * Quelle est l'adresse de la puce?
-    * Que mesure t-elle?
-    * Trouvez des exemples d'application
-    * Comment les mesures sont t-elles représentées?
-
-.. step::
-
-    **Choisissez les bonnes broches pour brancher le module à votre carte.**
+    * What is the address of the chip?
+    * What is it measuring?
+    * Find some application example
+    * How are measures represented numerically?
 
 .. step::
-    **Implémentez le bus adéquat dans votre code**
-    A l'aide de la documentation du microcontrôleur ET du module, implémentez
-    la communication de manière à récupérer les valeurs du module.
+
+    **Choose proper pins and plug the module to your Arduino Uno.**
+
+.. step::
+    **Implement proper bus in your code.**
+    With the help of microcontroller's and module's documentation, implement communication
+    to retrieve the sampled values.
     
-Intégration
+Integration
 -----------
 
 .. step::
 
-    Remontez les valeurs mesurées à travers la communication série UART
+    Display those values through UART bus
 
 .. step::
 
-    A partir des informations fournies par le capteur, calculez le *tangage* et le
-    *roulis*.
+    From those information, compute the *pitch* and the *roll* currently experienced
+    by the sensor.
