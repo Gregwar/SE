@@ -119,7 +119,7 @@ Cette version, dite en scrutation:
 
 .. code-block:: c
     // Attend de pouvoir envoyer le prochain octet
-    while (UCSR0A & _BV(UDRE0));
+    while (!(UCSR0A & _BV(UDRE0)));
 
 Peut être réécrite en utilisant l'interruption correspondange:
 
