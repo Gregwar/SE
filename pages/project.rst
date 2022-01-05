@@ -1,7 +1,7 @@
-Project: Persistent of View
-==========================================
+Project: Persistent of Vision
+=============================
 
-The goal of this project is to program a **persistent of view** display.
+The goal of this project is to program a **persistent of vision** display.
 A 16 leds strip is assembled on a board itself assembled on a rotating motor. By changing
 the leds configuration while it's moving, it is then possible to display things:
 
